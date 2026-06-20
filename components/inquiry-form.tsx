@@ -25,6 +25,7 @@ export function InquiryForm() {
   const [message, setMessage] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [sermonCount, setSermonCount] = useState(3);
+  const [filledFields, setFilledFields] = useState<Set<string>>(new Set());
 
   const wantsDigital = selectedServices.some((service) => service.includes("Website") || service.includes("Message") || service.includes("Snapshot") || service.includes("Focused") || service.includes("Priority"));
   const wantsSermons = selectedServices.includes("Sermon Clarity Review");
@@ -32,6 +33,20 @@ export function InquiryForm() {
 
   function toggleService(service: string) {
     setSelectedServices((current) => (current.includes(service) ? current.filter((item) => item !== service) : [...current, service]));
+  }
+
+  function setFieldFilled(name: string, value: string) {
+    setFilledFields((current) => {
+      const next = new Set(current);
+
+      if (value.trim()) {
+        next.add(name);
+      } else {
+        next.delete(name);
+      }
+
+      return next;
+    });
   }
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -55,6 +70,7 @@ export function InquiryForm() {
       event.currentTarget.reset();
       setSelectedServices([]);
       setSermonCount(3);
+      setFilledFields(new Set());
       setStep(0);
       return;
     }
@@ -76,15 +92,15 @@ export function InquiryForm() {
       <fieldset className={step === 0 ? "grid gap-5" : "hidden"}>
         <legend className="font-display text-3xl font-black">Tell us who you are.</legend>
         <div className="grid gap-5 md:grid-cols-2">
-          <FormInput name="name" label="Name" required />
-          <FormInput name="email" label="Email" type="email" required />
+          <FormInput name="name" label="Name" required filled={filledFields.has("name")} onFieldValue={setFieldFilled} />
+          <FormInput name="email" label="Email" type="email" required filled={filledFields.has("email")} onFieldValue={setFieldFilled} />
           <FormInput name="role" label="Your role" placeholder="Lead pastor, comms director, ops lead..." />
           <FormInput name="phone" label="Phone" type="tel" />
-          <FormInput name="organization" label="Organization" required />
+          <FormInput name="organization" label="Organization" required filled={filledFields.has("organization")} onFieldValue={setFieldFilled} />
           <FormInput name="website" label="Website" type="url" />
         </div>
         <div className="grid gap-5 md:grid-cols-2">
-          <SelectInput name="organizationType" label="Organization type" options={["Church", "Ministry", "Purpose-driven business", "Other"]} required />
+          <SelectInput name="organizationType" label="Organization type" options={["Church", "Ministry", "Purpose-driven business", "Other"]} required filled={filledFields.has("organizationType")} onFieldValue={setFieldFilled} />
           <FormInput name="size" label="Average weekly attendance or company size" />
           <FormInput name="location" label="City and state" />
           <FormInput name="denominationOrNetwork" label="Denomination / network, if relevant" />
@@ -93,7 +109,7 @@ export function InquiryForm() {
 
       <fieldset className={step === 1 ? "grid gap-5" : "hidden"}>
         <legend className="font-display text-3xl font-black">Choose the scope.</legend>
-        <FormTextarea name="improve" label="What are you trying to improve?" required />
+        <FormTextarea name="improve" label="What are you trying to improve?" required filled={filledFields.has("improve")} onFieldValue={setFieldFilled} />
         <div>
           <p className="text-sm font-black uppercase">Which services are you interested in?</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -232,20 +248,64 @@ export function InquiryForm() {
   );
 }
 
-function FormInput({ label, name, type = "text", required, placeholder }: { label: string; name: string; type?: string; required?: boolean; placeholder?: string }) {
+function RequiredMark({ filled }: { filled?: boolean }) {
+  return (
+    <span aria-hidden="true" className={filled ? "ml-1 text-ink/60" : "ml-1 text-red-600"}>
+      *
+    </span>
+  );
+}
+
+function FormInput({
+  label,
+  name,
+  type = "text",
+  required,
+  placeholder,
+  filled,
+  onFieldValue
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  placeholder?: string;
+  filled?: boolean;
+  onFieldValue?: (name: string, value: string) => void;
+}) {
   return (
     <div className="grid gap-2">
-      <label className="text-sm font-black uppercase" htmlFor={name}>{label}</label>
-      <input id={name} name={name} type={type} required={required} placeholder={placeholder} className="min-h-12 border border-ink/20 bg-paper px-3 text-ink placeholder:text-ink/35" />
+      <label className="text-sm font-black uppercase" htmlFor={name}>
+        {label}
+        {required ? <RequiredMark filled={filled} /> : null}
+      </label>
+      <input id={name} name={name} type={type} required={required} placeholder={placeholder} onChange={(event) => onFieldValue?.(name, event.target.value)} className="min-h-12 border border-ink/20 bg-paper px-3 text-ink placeholder:text-ink/35" />
     </div>
   );
 }
 
-function FormTextarea({ label, name, required, placeholder }: { label: string; name: string; required?: boolean; placeholder?: string }) {
+function FormTextarea({
+  label,
+  name,
+  required,
+  placeholder,
+  filled,
+  onFieldValue
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  placeholder?: string;
+  filled?: boolean;
+  onFieldValue?: (name: string, value: string) => void;
+}) {
   return (
     <div className="grid gap-2">
-      <label className="text-sm font-black uppercase" htmlFor={name}>{label}</label>
-      <textarea id={name} name={name} required={required} placeholder={placeholder} rows={5} className="border border-ink/20 bg-paper p-3 text-ink placeholder:text-ink/35" />
+      <label className="text-sm font-black uppercase" htmlFor={name}>
+        {label}
+        {required ? <RequiredMark filled={filled} /> : null}
+      </label>
+      <textarea id={name} name={name} required={required} placeholder={placeholder} rows={5} onChange={(event) => onFieldValue?.(name, event.target.value)} className="border border-ink/20 bg-paper p-3 text-ink placeholder:text-ink/35" />
     </div>
   );
 }
@@ -256,7 +316,9 @@ function SelectInput({
   options,
   required,
   value,
-  onChange
+  onChange,
+  filled,
+  onFieldValue
 }: {
   label: string;
   name: string;
@@ -264,11 +326,26 @@ function SelectInput({
   required?: boolean;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  filled?: boolean;
+  onFieldValue?: (name: string, value: string) => void;
 }) {
   return (
     <div className="grid gap-2">
-      <label className="text-sm font-black uppercase" htmlFor={name}>{label}</label>
-      <select id={name} name={name} required={required} value={value} onChange={onChange} className="min-h-12 border border-ink/20 bg-paper px-3 text-ink">
+      <label className="text-sm font-black uppercase" htmlFor={name}>
+        {label}
+        {required ? <RequiredMark filled={filled} /> : null}
+      </label>
+      <select
+        id={name}
+        name={name}
+        required={required}
+        value={value}
+        onChange={(event) => {
+          onFieldValue?.(name, event.target.value);
+          onChange?.(event);
+        }}
+        className="min-h-12 border border-ink/20 bg-paper px-3 text-ink"
+      >
         <option value="">Select one</option>
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>
