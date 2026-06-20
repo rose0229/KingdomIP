@@ -110,7 +110,7 @@ STRIPE_SECRET_KEY=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 ```
 
-The contact form returns success without sending email if Resend is not configured, which keeps launch testing smooth. Add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` before real traffic.
+The contact form sends through Resend. Add `RESEND_API_KEY` and `CONTACT_TO_EMAIL` before real traffic. `CONTACT_TO_EMAIL` is where inquiries go; use one email or a comma-separated list. If Resend is not configured, the form shows an error instead of a false success.
 
 ## Sanity CMS Setup
 
