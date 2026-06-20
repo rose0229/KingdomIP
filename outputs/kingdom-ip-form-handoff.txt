@@ -1,0 +1,32 @@
+KINGDOM IP FORM HANDOFF
+Updated: 2026-06-20
+
+WHERE SUBMISSIONS GO
+- Page-one leads email through Resend to CONTACT_TO_EMAIL in Vercel.
+- Completed intakes send a second fuller email to the same inbox.
+- Email sender is CONTACT_FROM_EMAIL in Vercel.
+
+HOW IT WORKS
+- Step 1 asks only for quick contact info and selected services.
+- Clicking Continue sends the first lead email immediately.
+- Each selected service creates one optional detail step.
+- Final step sends the completed intake.
+
+HOW TO EDIT SERVICE OPTIONS
+- Edit serviceOptions and servicePages in:
+  components/inquiry-form.tsx
+
+HOW TO EDIT RECIPIENTS
+- Vercel > kingdom-ip > Settings > Environment Variables
+- Change CONTACT_TO_EMAIL.
+- Redeploy after changes.
+
+HOW TO ADD A SERVICE PAGE
+- Add the service label to serviceOptions.
+- Add a matching object to servicePages with the same service name.
+- Add fields to that page object.
+
+INCOMPLETE LEADS
+- Anyone who completes Step 1 sends a lead email even if they quit later.
+- Subject starts with: New Kingdom IP Inquiry
+- Completed forms start with: Completed Kingdom IP Intake

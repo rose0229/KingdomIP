@@ -5,11 +5,11 @@ import { z } from "zod";
 const inquirySchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  organization: z.string().min(2),
+  organization: z.string().optional(),
   website: z.string().optional(),
   organizationType: z.string().optional(),
   size: z.string().optional(),
-  improve: z.string().min(10),
+  improve: z.string().optional(),
   services: z.string().optional(),
   budget: z.string().optional(),
   timeline: z.string().optional(),
@@ -19,6 +19,11 @@ const inquirySchema = z.object({
 
 export async function POST(request: Request) {
   const json = await request.json().catch(() => null);
+
+  if (json?.companyWebsite) {
+    return NextResponse.json({ ok: true });
+  }
+
   const parsed = inquirySchema.safeParse(json);
 
   if (!parsed.success) {
@@ -45,15 +50,17 @@ export async function POST(request: Request) {
     .map(([key, value]) => `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:700;vertical-align:top">${escapeHtml(labelize(key))}</td><td style="padding:8px;border:1px solid #ddd;white-space:pre-wrap">${escapeHtml(String(value || ""))}</td></tr>`)
     .join("");
   const text = entries.map(([key, value]) => `${labelize(key)}:\n${String(value || "")}`).join("\n\n");
+  const isCompleted = data.formCompletionStatus === "completed";
+  const subjectName = data.organization || data.name;
 
   try {
     const result = await resend.emails.send({
       from,
       to: recipients,
       replyTo: data.email,
-      subject: `New Kingdom IP inquiry from ${data.organization}`,
-      text: `New Kingdom IP inquiry\n\n${text}`,
-      html: `<h1>New Kingdom IP inquiry</h1><p><strong>Reply to:</strong> ${escapeHtml(data.email)}</p><table style="border-collapse:collapse">${rows}</table>`
+      subject: isCompleted ? `Completed Kingdom IP Intake: ${subjectName}` : `New Kingdom IP Inquiry: ${subjectName}`,
+      text: `${isCompleted ? "Completed Kingdom IP intake" : "New Kingdom IP inquiry"}\n\n${text}`,
+      html: `<h1>${isCompleted ? "Completed Kingdom IP intake" : "New Kingdom IP inquiry"}</h1><p><strong>Reply to:</strong> ${escapeHtml(data.email)}</p><table style="border-collapse:collapse">${rows}</table>`
     });
 
     if (result.error) {
