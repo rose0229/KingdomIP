@@ -30,6 +30,10 @@ export async function POST(request: Request) {
   const from = process.env.CONTACT_FROM_EMAIL ?? "Kingdom IP <hello@kingdomip.org>";
 
   if (!resendKey || !to) {
+    console.error("Kingdom IP contact form missing email configuration", {
+      hasResendKey: Boolean(resendKey),
+      hasContactToEmail: Boolean(to)
+    });
     return NextResponse.json({ error: "Email delivery is not configured yet. Please email hello@kingdomip.org." }, { status: 503 });
   }
 
@@ -53,9 +57,11 @@ export async function POST(request: Request) {
     });
 
     if (result.error) {
+      console.error("Kingdom IP contact form Resend error", result.error);
       return NextResponse.json({ error: "The inquiry could not be sent. Please email hello@kingdomip.org." }, { status: 502 });
     }
-  } catch {
+  } catch (error) {
+    console.error("Kingdom IP contact form send exception", error);
     return NextResponse.json({ error: "The inquiry could not be sent. Please email hello@kingdomip.org." }, { status: 502 });
   }
 
