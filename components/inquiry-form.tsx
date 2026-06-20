@@ -47,9 +47,9 @@ export function InquiryForm() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
-    });
+    }).catch(() => null);
 
-    if (response.ok) {
+    if (response?.ok) {
       setStatus("success");
       setMessage("Thanks. Your inquiry was received. Kingdom IP will follow up with next steps.");
       event.currentTarget.reset();
@@ -59,13 +59,13 @@ export function InquiryForm() {
       return;
     }
 
-    const data = await response.json().catch(() => null);
+    const data = await response?.json().catch(() => null);
     setStatus("error");
     setMessage(data?.error ?? "Something went wrong. Please email hello@kingdomip.org.");
   }
 
   return (
-    <form onSubmit={submit} className="border border-ink/15 bg-bone p-5 md:p-8">
+    <form onSubmit={submit} noValidate className="border border-ink/15 bg-bone p-5 md:p-8">
       <div className="mb-8 grid gap-3" aria-label="Form progress">
         <div className="flex gap-2">
           {steps.map((label, index) => <span key={label} className={`h-2 flex-1 ${index <= step ? "bg-cobalt" : "bg-ink/12"}`} />)}
