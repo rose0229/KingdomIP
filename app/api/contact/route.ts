@@ -58,11 +58,11 @@ export async function POST(request: Request) {
 
     if (result.error) {
       console.error("Kingdom IP contact form Resend error", result.error);
-      return NextResponse.json({ error: "The inquiry could not be sent. Please email hello@kingdomip.org." }, { status: 502 });
+      return NextResponse.json({ error: `The inquiry could not be sent: ${publicErrorMessage(result.error)}` }, { status: 502 });
     }
   } catch (error) {
     console.error("Kingdom IP contact form send exception", error);
-    return NextResponse.json({ error: "The inquiry could not be sent. Please email hello@kingdomip.org." }, { status: 502 });
+    return NextResponse.json({ error: `The inquiry could not be sent: ${publicErrorMessage(error)}` }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });
@@ -82,4 +82,12 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function publicErrorMessage(error: unknown) {
+  if (error && typeof error === "object" && "message" in error && typeof error.message === "string") {
+    return error.message.replace(/re_[A-Za-z0-9_-]+/g, "[redacted]");
+  }
+
+  return "email service rejected the request. Please email hello@kingdomip.org.";
 }
