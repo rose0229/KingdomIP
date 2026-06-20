@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Kingdom IP social profile">
+  <rect width="1080" height="1080" fill="#111111"/>
+  <path d="M0 900h1080v180H0z" fill="#315cff"/>
+  <path d="M850 0h230v230H850z" fill="#d8ff3f"/>
+  <rect x="180" y="180" width="720" height="720" fill="none" stroke="#d8ff3f" stroke-width="24"/>
+  <path d="M335 310h96v182l178-182h114L514 517l225 183H606L431 554v146h-96V310Z" fill="#d8ff3f"/>
+</svg>

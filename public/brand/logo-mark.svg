@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Kingdom IP mark">
+  <rect width="240" height="240" fill="#111111"/>
+  <rect x="16" y="16" width="208" height="208" fill="none" stroke="#d8ff3f" stroke-width="8"/>
+  <path d="M60 54h34v61l60-61h38l-70 70 76 62h-45l-59-49v49H60V54Z" fill="#d8ff3f"/>
+</svg>

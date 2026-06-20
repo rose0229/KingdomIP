@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 180" role="img" aria-label="Kingdom IP wordmark">
+  <rect width="820" height="180" fill="#111111"/>
+  <rect x="24" y="24" width="132" height="132" fill="none" stroke="#d8ff3f" stroke-width="5"/>
+  <path d="M55 50h21v39l39-39h24L94 96l48 39h-28l-38-32v32H55V50Z" fill="#d8ff3f"/>
+  <text x="190" y="111" fill="#f7f3e8" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="900" letter-spacing="0">KINGDOM</text>
+  <text x="535" y="111" fill="#d8ff3f" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="900" letter-spacing="0">IP</text>
+</svg>
