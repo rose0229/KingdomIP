@@ -7,7 +7,7 @@ const inquirySchema = z.object({
   email: z.string().email(),
   organization: z.string().min(2),
   website: z.string().optional(),
-  organizationType: z.string().min(2),
+  organizationType: z.string().optional(),
   size: z.string().optional(),
   improve: z.string().min(10),
   services: z.string().optional(),
