@@ -158,7 +158,7 @@ const servicePages = [
   },
   {
     service: "AI Systems or Workflow Consulting",
-    title: "AI Systems & Workflow Consulting",
+    title: "AI Systems or Workflow Consulting",
     fields: [
       { type: "text", name: "aiWebsite", label: "Website URL", autoFill: "website" },
       { type: "checkbox", name: "aiHelp", label: "What work do you want AI to help with?", options: ["Content creation", "Sermon research / planning", "Social media", "Email / communication", "Volunteer systems", "Data analysis", "Guest follow-up", "Administration", "Team training", "Website support", "Other"] },

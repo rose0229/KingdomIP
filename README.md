@@ -4,7 +4,7 @@ Lean production-ready Next.js website for **Kingdom IP**, a diagnostic strategy 
 
 ## Strategy Brief
 
-Kingdom IP should feel intelligent, direct, modern, useful, and high-trust. The positioning is expert diagnostic judgment, not automated reporting. The site is built to generate qualified leads by helping visitors quickly understand the audit model, compare packages, and start an intake without wading through a large consulting catalog.
+Kingdom IP should feel intelligent, direct, modern, useful, and high-trust. The positioning is expert diagnostic judgment, not automated reporting. The site is built to generate qualified leads by helping visitors quickly understand the project lanes, compare scope anchors, and start an intake without wading through a large consulting catalog.
 
 Core message: **Find what is holding your church back.**
 
@@ -14,8 +14,8 @@ The copy avoids vague church language, inflated growth promises, generic consult
 
 ## Public Sitemap
 
-- `/` - Homepage with hero, process summary, focused services, what you get, why Kingdom IP, featured package, FAQ preview, final CTA.
-- `/services` - Focused audit services plus package comparison.
+- `/` - Homepage with hero, process summary, project lanes, what you get, why Kingdom IP, featured package, FAQ preview, final CTA.
+- `/services` - Project lanes plus package comparison.
 - `/contact` - Multi-step inquiry form.
 - `/studio` - Sanity Studio for future CMS-managed content.
 
@@ -54,17 +54,22 @@ Avoided motifs: crosses, doves, church buildings, crowns, shields, flames, soft 
 
 ## Offer Strategy
 
-The public menu is intentionally narrow:
+The public menu matches the intake lanes:
 
-- Website & Digital Presence Audit: `$750-$1,500`
-- Message & Next Step Audit: `$950-$1,750`
-- Sermon Clarity Review: `$350` single / `$950` bundle
-- Systems & Workflow Audit: `$1,250-$2,500`
-- Custom Consulting: by inquiry
+- Website Audit: `$750-$1,500`
+- Website Strategy or Redesign: by inquiry
+- Social Media Audit: `$750-$1,500`
+- Brand / Messaging Audit: `$950-$1,750`
+- Sermon / Preaching Audit: `$350` single / `$950` bundle
+- Church or Ministry Strategy: by inquiry
+- Guest Experience / Assimilation Audit: by inquiry
+- Communication Strategy: by inquiry
+- AI Systems or Workflow Consulting: by inquiry
+- Custom Project / Not Sure Yet: by inquiry
 
 This keeps Kingdom IP from promising work that needs interviews, onsite observation, or deeper leadership facilitation before a proper scope is defined.
 
-The contact intake is intentionally thorough. It routes people through basics, scope, digital/message materials, sermon review materials, systems/workflow context, and final permissions. The sermon section supports 1, 3, 5, or 10 sermon reviews with separate links and details for each sermon. A 10-sermon diagnostic should be treated as a premium engagement, not the default sermon offer.
+The contact intake starts simple, then branches based on the services selected. The sermon section supports 1, 3, 5, or 10 sermon reviews with separate links and details for each sermon. A 10-sermon diagnostic should be treated as a premium engagement, not the default sermon offer.
 
 ## Wireframe Summary
 
@@ -72,14 +77,14 @@ Homepage:
 
 1. Dark hero with headline, dual CTA, diagnostic scorecard visual.
 2. Three-step audit explanation.
-3. Four service category cards.
+3. Service lane cards.
 4. Dark "What You Get" section.
 5. Why Kingdom IP and sample social proof format.
 6. Featured package panel.
 7. FAQ preview.
 8. Final CTA.
 
-Services includes the audit menu and package comparison. Contact uses a multi-step form to capture complete audit materials.
+Services includes the project lanes and package comparison. Contact uses a branching multi-step form to capture the right project materials.
 
 ## Local Setup
 

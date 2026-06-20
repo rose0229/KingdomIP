@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { packages, serviceCategories } from "@/lib/content";
 import { siteUrl } from "@/lib/utils";
 
-export const metadata = pageMetadata("Services", "A smaller menu of focused Kingdom IP audits for websites, messaging, sermons, and ministry workflows.", "/services");
+export const metadata = pageMetadata("Services", "Kingdom IP project lanes for audits, strategy, communication, AI workflows, sermon review, and ministry consulting.", "/services");
 
 export default function ServicesPage() {
   return (
@@ -23,13 +23,13 @@ export default function ServicesPage() {
       />
       <section className="bg-ink py-20 text-paper dark-grid">
         <div className="container">
-          <SectionHeading light eyebrow="Services" title="Fewer offers. Better fit." copy="These are the audits Kingdom IP can reasonably deliver from links, documents, videos, systems access, and a clear intake. Work that needs interviews or onsite observation is scoped custom." />
+          <SectionHeading light eyebrow="Services" title="Start with the right lane." copy="Choose the project area that best matches what you need. The intake keeps the first step quick, then asks follow-up questions only for the services you select." />
         </div>
       </section>
       <section className="border-b border-ink/10 bg-lime py-8">
         <div className="container">
           <p className="max-w-4xl text-lg font-bold leading-8 text-ink">
-            The public menu is intentionally narrow. Guest experience, volunteer culture, staffing, and broad church growth work can be valuable, but they need more context than a quick remote audit can responsibly claim.
+            The first step is intentionally short. Service-specific questions come later only when they help Kingdom IP respond faster, understand the work, and recommend the right scope.
           </p>
         </div>
       </section>

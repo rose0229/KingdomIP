@@ -21,7 +21,7 @@ export default function HomePage() {
       <section className="dark-grid bg-ink text-paper">
         <div className="container grid min-h-[calc(100vh-80px)] items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.22em] text-lime">Church audits and strategic diagnosis</p>
+            <p className="text-sm font-black uppercase tracking-[0.22em] text-lime">Church audits, strategy, and practical systems</p>
             <h1 className="mt-5 max-w-4xl font-display text-6xl font-black leading-[0.88] tracking-normal text-balance md:text-8xl">
               Find What&apos;s Holding Your Church Back.
             </h1>
@@ -29,7 +29,7 @@ export default function HomePage() {
               Kingdom IP gives churches and purpose-driven organizations a clear, honest look at what is working, what is weak, and what to do next.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/contact">Get an Audit</ButtonLink>
+              <ButtonLink href="/contact">Start a Project</ButtonLink>
               <ButtonLink href="/services" variant="secondary">Explore Services</ButtonLink>
             </div>
           </div>
@@ -58,8 +58,8 @@ export default function HomePage() {
 
       <section className="bg-bone py-20">
         <div className="container">
-          <SectionHeading eyebrow="Services" title="A smaller menu. Sharper diagnosis." copy="Start with one of four focused audits. Bigger questions can be scoped after intake when they actually need interviews, onsite observation, or deeper consulting." />
-          <div className="mt-10 grid gap-5 lg:grid-cols-4">
+          <SectionHeading eyebrow="Services" title="Choose the lane that fits." copy="Start with a quick inquiry, then answer only the follow-up questions tied to what you select. Kingdom IP can respond with a better scope when the intake matches the work." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {coreServices.map((service) => (
               <Link key={service.title} href={`/services#${service.slug}`} className="group border border-ink/15 bg-paper p-6 transition hover:-translate-y-1 hover:border-cobalt hover:shadow-line">
                 <p className="text-xs font-black uppercase text-cobalt">{service.price}</p>
@@ -145,7 +145,7 @@ export default function HomePage() {
             <p className="text-sm font-black uppercase text-lime">Ready for a clearer picture?</p>
             <h2 className="mt-3 font-display text-4xl font-black md:text-6xl">Know what to fix first.</h2>
           </div>
-          <ButtonLink href="/contact">Get an Audit</ButtonLink>
+          <ButtonLink href="/contact">Start a Project</ButtonLink>
         </div>
       </section>
     </main>

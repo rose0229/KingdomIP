@@ -6,20 +6,25 @@ export const navItems = [
 
 export const serviceCategories = [
   {
-    title: "Focused Audits",
-    description: "Remote-friendly diagnostics Kingdom IP can deliver well from links, documents, videos, and workflow access.",
+    title: "Digital, Message, and Ministry Audits",
+    description: "Remote-friendly diagnostics Kingdom IP can deliver well from links, documents, videos, systems access, and a clear intake.",
     services: [
-      ["Website & Digital Presence Audit", "For churches whose online first impression is unclear, outdated, or not moving guests toward a next step.", "Homepage clarity, mobile experience, calls to action, basic SEO, Google profile signals, social first impression, speed, trust cues, and content gaps.", "A prioritized scorecard, page-level findings, copy notes, quick wins, and a practical action list.", "7-10 business days", "$750-$1,500"],
-      ["Message & Next Step Audit", "For churches that have good ministry but confusing language, scattered CTAs, or a weak connection pathway.", "Homepage language, guest pathway, connection card, follow-up wording, ministry names, announcement clarity, and next-step hierarchy.", "Messaging diagnosis, next-step friction map, recommended language, and a 30-day priority list.", "7-10 business days", "$950-$1,750"],
-      ["Sermon Clarity Review", "For pastors who want constructive feedback on clarity, structure, delivery, and application.", "One sermon video or transcript, sermon structure, biblical flow, transitions, application, attention, delivery, and call to response.", "Sermon scorecard, annotated observations, strengths, priority improvements, and optional debrief.", "5-7 business days", "$350 single / $950 bundle"],
-      ["Systems & Workflow Audit", "For teams with too much manual work, unclear handoffs, or tools that are not carrying enough weight.", "Forms, follow-up workflows, Planning Center or CRM usage, recurring admin tasks, communication handoffs, content process, and reporting gaps.", "Workflow map, friction diagnosis, practical tool recommendations, and implementation-ready next steps.", "10-14 business days", "$1,250-$2,500"]
+      ["Website Audit", "For churches and organizations whose online first impression is unclear, outdated, or not moving people toward a next step.", "Homepage clarity, mobile experience, calls to action, basic SEO, trust cues, content gaps, and key page flow.", "A prioritized website diagnosis, page-level findings, copy notes, quick wins, and practical next steps.", "7-10 business days", "$750-$1,500"],
+      ["Website Strategy or Redesign", "For teams deciding whether they need small improvements, a strategic refresh, a full redesign, or a new site.", "Audience, visitor actions, required pages, brand assets, platform fit, budget range, launch timing, and examples you admire.", "A clear website direction, scope recommendation, priority page plan, and next-step options.", "Scoped after intake", "By inquiry"],
+      ["Social Media Audit", "For organizations whose social presence feels inconsistent, unclear, or disconnected from real ministry or business goals.", "Primary platforms, audience, content patterns, engagement goals, trust signals, and channel priorities.", "A social presence diagnosis, practical content recommendations, priority fixes, and clearer channel focus.", "7-10 business days", "$750-$1,500"],
+      ["Brand / Messaging Audit", "For organizations with scattered language, unclear positioning, confusing next steps, or inconsistent brand signals.", "Website language, tagline or mission, audience clarity, misunderstandings, brand assets, and comparable organizations.", "Messaging diagnosis, clarity recommendations, stronger positioning language, and practical brand next steps.", "7-10 business days", "$950-$1,750"],
+      ["Sermon / Preaching Audit", "For pastors who want constructive feedback on biblical faithfulness, clarity, structure, delivery, and application.", "Sermon video or audio, structure, exegesis, application, delivery, engagement, emotional connection, and response moments.", "Sermon observations, strengths, priority improvements, and optional debrief.", "5-7 business days", "$350 single / $950 bundle"],
+      ["Church or Ministry Strategy", "For ministry leaders trying to clarify the next right move across growth, systems, volunteers, discipleship, or communication.", "Context, attendance, volunteers, strategic challenge, desired outcomes, constraints, and what has already been tried.", "A practical strategy diagnosis, priority outcomes, and recommended next steps.", "Scoped after intake", "By inquiry"],
+      ["Guest Experience / Assimilation Audit", "For churches that need a clearer guest pathway from first visit to meaningful next step.", "Service times, arrival experience, signage, hospitality, kids check-in, follow-up, connection events, and tracking.", "Guest pathway diagnosis, friction points, follow-up recommendations, and improvement priorities.", "Scoped after intake", "By inquiry"],
+      ["Communication Strategy", "For teams whose announcements, email, social, website, or internal communication are not producing clear action.", "Primary channels, recurring communication problems, audiences, campaign examples, and desired actions.", "Communication diagnosis, audience/channel recommendations, and clearer action priorities.", "Scoped after intake", "By inquiry"],
+      ["AI Systems or Workflow Consulting", "For teams that want AI to reduce repetitive work without creating confusion, privacy risk, or unrealistic expectations.", "Current tools, repetitive tasks, workflow bottlenecks, team users, data concerns, and practical use cases.", "A realistic AI/workflow plan, tool recommendations, and implementation next steps.", "Scoped after intake", "By inquiry"]
     ]
   },
   {
-    title: "Custom Consulting",
-    description: "For questions that require interviews, deeper context, onsite observation, or broader leadership judgment.",
+    title: "Custom Projects",
+    description: "For questions that do not fit neatly into one audit lane.",
     services: [
-      ["Custom Strategic Engagement", "For leaders with a specific question that does not fit a productized audit.", "Scoped around the decision, available data, stakeholder input, ministry context, and the kind of judgment required.", "A defined scope, custom research, diagnostic findings, strategic recommendations, and implementation support options.", "Scoped after intake", "By inquiry"]
+      ["Custom Project / Not Sure Yet", "For leaders who know something needs attention but are not sure which service fits.", "The problem, desired outcome, prior attempts, deadlines, budget range, examples, and any relevant files or screenshots.", "A recommended scope, next step, or custom project path.", "Scoped after intake", "By inquiry"]
     ]
   }
 ].map((category) => ({
@@ -77,7 +82,7 @@ export const packages = [
 export const faqs = [
   ["Is Kingdom IP only for churches?", "Churches are the primary audience, but Kingdom IP also works with ministries and select purpose-driven businesses that need clear diagnostic strategy."],
   ["Are reports automatically generated?", "No. Modern tools can support research and organization, but the value is expert judgment, practical ministry experience, and clear recommendations."],
-  ["Why are there fewer public services?", "A smaller menu keeps the work honest. Some questions require interviews, onsite observation, or deeper consulting, so those are scoped after intake instead of packaged too casually."],
+  ["Why does the intake ask follow-up questions?", "The first page is intentionally quick. The later pages are optional and only appear for the services selected so Kingdom IP can respond faster and with better judgment."],
   ["Can we start small?", "Yes. The Snapshot Audit is designed as a low-friction first step when you need a fast, useful read on one specific issue."],
   ["Do you guarantee growth?", "No. Kingdom IP does not promise attendance growth. The work is designed to clarify reality, identify friction, and help leaders choose better priorities."],
   ["Can pricing change?", "Yes. Package pricing is set up as editable content in the CMS so it can be updated without code changes."]
