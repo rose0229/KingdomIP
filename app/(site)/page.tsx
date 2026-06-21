@@ -62,7 +62,7 @@ export default function HomePage() {
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {coreServices.map((service) => (
               <Link key={service.title} href={`/services#${service.slug}`} className="group border border-ink/15 bg-paper p-6 transition hover:-translate-y-1 hover:border-cobalt hover:shadow-line">
-                <p className="text-xs font-black uppercase text-cobalt">{service.price}</p>
+                <p className="text-xs font-black uppercase text-cobalt">{service.timeline}</p>
                 <h3 className="mt-4 font-display text-2xl font-black">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-ink/68">{service.who}</p>
                 <ArrowRight className="mt-6 h-5 w-5 transition group-hover:translate-x-1" aria-hidden />
@@ -111,7 +111,6 @@ export default function HomePage() {
           <SectionHeading eyebrow="Featured package" title={featured.name} copy={featured.description} />
           <div className="border-2 border-ink bg-lime p-8 text-ink">
             <p className="text-sm font-black uppercase">{featured.eyebrow}</p>
-            <p className="mt-3 font-display text-6xl font-black">{featured.price}</p>
             <p className="mt-4 text-lg font-bold">{featured.bestFor}</p>
             <div className="mt-6 grid gap-2">
               {featured.includes.map((item) => (

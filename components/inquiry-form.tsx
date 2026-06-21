@@ -50,7 +50,6 @@ const servicePages = [
       { type: "textarea", name: "redesignMustHave", label: "Pages or information that must be included" },
       { type: "checkbox", name: "redesignAssets", label: "Branding assets you already have", options: ["Logo", "Brand colors", "Photos", "Copy / messaging", "None of the above", "Not sure"] },
       { type: "text", name: "redesignLaunchDate", label: "Ideal launch date" },
-      { type: "select", name: "redesignBudget", label: "Rough budget range", options: ["Under $1,000", "$1,000-$2,500", "$2,500-$5,000", "$5,000-$10,000", "$10,000+", "Not sure yet"] },
       { type: "textarea", name: "redesignAdmire", label: "Websites you admire" },
       { type: "textarea", name: "redesignNotes", label: "Anything else we should know?" }
     ]
@@ -180,7 +179,6 @@ const servicePages = [
       { type: "textarea", name: "customSuccess", label: "What would a successful outcome look like?" },
       { type: "textarea", name: "customTried", label: "What have you already tried?" },
       { type: "text", name: "customDeadline", label: "Deadline or event connected to this" },
-      { type: "select", name: "customBudget", label: "Rough budget range", options: ["Under $1,000", "$1,000-$2,500", "$2,500-$5,000", "$5,000-$10,000", "$10,000+", "Not sure yet"] },
       { type: "textarea", name: "customFiles", label: "Relevant file, screenshot, example, or document links" },
       { type: "textarea", name: "customNotes", label: "Anything else we should know?" }
     ]

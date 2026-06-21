@@ -47,7 +47,7 @@ export default function ServicesPage() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <h2 className="font-display text-3xl font-black">{service.title}</h2>
-                        <p className="mt-2 text-sm font-black uppercase text-cobalt">{service.price} · {service.timeline}</p>
+                        <p className="mt-2 text-sm font-black uppercase text-cobalt">{service.timeline}</p>
                       </div>
                       <ButtonLink href={`/contact?service=${service.slug}`} variant="ghost" className="sm:shrink-0">Inquire</ButtonLink>
                     </div>
@@ -65,13 +65,12 @@ export default function ServicesPage() {
       </section>
       <section id="packages" className="bg-bone py-16">
         <div className="container">
-          <SectionHeading eyebrow="Packages" title="Start small. Go deeper when it makes sense." copy="Use these as pricing and scope anchors. The intake form captures the details needed to confirm the right fit." />
+          <SectionHeading eyebrow="Packages" title="Start small. Go deeper when it makes sense." copy="Use these as scope anchors. The intake form captures the details needed to confirm the right fit." />
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {packages.map((pkg) => (
               <article key={pkg.name} className={`border p-6 ${pkg.featured ? "border-ink bg-lime text-ink shadow-line" : "border-ink/15 bg-paper"}`}>
                 <p className="text-xs font-black uppercase text-cobalt">{pkg.eyebrow}</p>
                 <h2 className="mt-4 font-display text-3xl font-black">{pkg.name}</h2>
-                <p className="mt-4 text-4xl font-black">{pkg.price}</p>
                 <p className="mt-5 font-bold leading-7">{pkg.description}</p>
                 <ul className="mt-6 space-y-3">
                   {pkg.includes.slice(0, 4).map((item) => <li className="border-t border-ink/15 pt-3 text-sm font-bold" key={item}>{item}</li>)}

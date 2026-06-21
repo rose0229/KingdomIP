@@ -54,18 +54,18 @@ Avoided motifs: crosses, doves, church buildings, crowns, shields, flames, soft 
 
 ## Offer Strategy
 
-The public menu matches the intake lanes:
+The public menu matches the intake lanes and does not display public rates:
 
-- Website Audit: `$750-$1,500`
-- Website Strategy or Redesign: by inquiry
-- Social Media Audit: `$750-$1,500`
-- Brand / Messaging Audit: `$950-$1,750`
-- Sermon / Preaching Audit: `$350` single / `$950` bundle
-- Church or Ministry Strategy: by inquiry
-- Guest Experience / Assimilation Audit: by inquiry
-- Communication Strategy: by inquiry
-- AI Systems or Workflow Consulting: by inquiry
-- Custom Project / Not Sure Yet: by inquiry
+- Website Audit
+- Website Strategy or Redesign
+- Social Media Audit
+- Brand / Messaging Audit
+- Sermon / Preaching Audit
+- Church or Ministry Strategy
+- Guest Experience / Assimilation Audit
+- Communication Strategy
+- AI Systems or Workflow Consulting
+- Custom Project / Not Sure Yet
 
 This keeps Kingdom IP from promising work that needs interviews, onsite observation, or deeper leadership facilitation before a proper scope is defined.
 
@@ -172,7 +172,7 @@ Stripe environment variables are included. Packages have stable names and slugs,
 ## Launch Checklist
 
 - Replace sample quote language with approved real testimonials when available.
-- Confirm package pricing and service descriptions.
+- Confirm package scope and service descriptions.
 - Configure Resend and test contact email delivery.
 - Add legal address and privacy terms if needed.
 - Check mobile views for every page.
