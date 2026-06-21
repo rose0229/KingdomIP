@@ -33,7 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             email: "hello@kingdomip.org",
             description: "Diagnostic audits and practical strategy recommendations for churches, ministries, and purpose-driven organizations.",
             areaServed: "United States",
-            serviceType: ["Church website audits", "Guest experience audits", "Communications audits", "Leadership systems audits", "Strategic consulting"],
+            serviceType: ["Website audits", "Sermon and preaching audits", "Communication strategy", "AI systems consulting", "Church and ministry strategy"],
             sameAs: []
           }}
         />

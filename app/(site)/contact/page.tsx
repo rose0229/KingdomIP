@@ -12,7 +12,7 @@ export default function ContactPage() {
           <SectionHeading light eyebrow="Start a project" title="Tell us what needs clarity." copy="Start with the basics. If you choose a service lane, the form only asks the follow-up questions needed to understand that kind of project." />
           <div className="border border-white/15 bg-white/5 p-5 text-paper/72">
             <p className="font-bold">Response expectation</p>
-            <p className="mt-2 leading-7">Most inquiries receive a reply within two business days. Replace this line in Sanity if the operating rhythm changes.</p>
+            <p className="mt-2 leading-7">Most inquiries receive a reply within two business days.</p>
           </div>
         </div>
       </section>

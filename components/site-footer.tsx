@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div className="space-y-5">
           <Logo />
           <p className="max-w-md text-base leading-7 text-paper/70">
-            Clear diagnosis. Practical next steps. Strategy audits for churches, ministries, and purpose-driven organizations.
+            Clear diagnosis. Practical next steps. Project strategy for churches, ministries, and purpose-driven organizations.
           </p>
           <ButtonLink href="/contact" variant="secondary">
             Start the Intake
@@ -31,7 +31,7 @@ export function SiteFooter() {
           <div className="mt-4 space-y-2 text-sm text-paper/72">
             <p>hello@kingdomip.org</p>
             <p>kingdomip.org</p>
-            <p>Contact details and legal information can be managed in Sanity site settings.</p>
+            <p>Start with a quick intake and Kingdom IP will recommend the right next step.</p>
           </div>
         </div>
       </div>
