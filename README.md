@@ -57,7 +57,7 @@ Avoided motifs: crosses, doves, church buildings, crowns, shields, flames, soft 
 The public menu matches the intake lanes and does not display public rates:
 
 - Website Audit
-- Website Strategy or Redesign
+- Website Strategy
 - Social Media Audit
 - Brand / Messaging Audit
 - Sermon / Preaching Audit

@@ -5,7 +5,7 @@ import { CheckCircle2, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
 const serviceOptions = [
   "Website Audit",
-  "Website Strategy or Redesign",
+  "Website Strategy",
   "Social Media Audit",
   "Brand / Messaging Audit",
   "Sermon / Preaching Audit",
@@ -40,18 +40,18 @@ const servicePages = [
     ]
   },
   {
-    service: "Website Strategy or Redesign",
-    title: "Website Strategy / Redesign",
+    service: "Website Strategy",
+    title: "Website Strategy",
     fields: [
-      { type: "text", name: "redesignUrl", label: "Current website URL", autoFill: "website" },
-      { type: "select", name: "redesignScope", label: "Are you looking for:", options: ["Small improvements", "A strategic refresh", "A full redesign", "A new website from scratch", "Not sure yet"] },
-      { type: "textarea", name: "redesignProblem", label: "What is the main problem with your current site?" },
-      { type: "textarea", name: "redesignActions", label: "Top three actions you want visitors to take" },
-      { type: "textarea", name: "redesignMustHave", label: "Pages or information that must be included" },
-      { type: "checkbox", name: "redesignAssets", label: "Branding assets you already have", options: ["Logo", "Brand colors", "Photos", "Copy / messaging", "None of the above", "Not sure"] },
-      { type: "text", name: "redesignLaunchDate", label: "Ideal launch date" },
-      { type: "textarea", name: "redesignAdmire", label: "Websites you admire" },
-      { type: "textarea", name: "redesignNotes", label: "Anything else we should know?" }
+      { type: "text", name: "websiteStrategyUrl", label: "Current website URL", autoFill: "website" },
+      { type: "select", name: "websiteStrategyScope", label: "What kind of website help do you need?", options: ["Clarity audit", "Strategic refresh plan", "Page priority plan", "Copy / messaging direction", "Platform recommendation", "Not sure yet"] },
+      { type: "textarea", name: "websiteStrategyProblem", label: "What is the main problem with your current site?" },
+      { type: "textarea", name: "websiteStrategyActions", label: "Top three actions you want visitors to take" },
+      { type: "textarea", name: "websiteStrategyMustHave", label: "Pages or information that must be included" },
+      { type: "checkbox", name: "websiteStrategyAssets", label: "Branding assets you already have", options: ["Logo", "Brand colors", "Photos", "Copy / messaging", "None of the above", "Not sure"] },
+      { type: "text", name: "websiteStrategyDeadline", label: "Timeline or decision deadline" },
+      { type: "textarea", name: "websiteStrategyAdmire", label: "Websites you admire" },
+      { type: "textarea", name: "websiteStrategyNotes", label: "Anything else we should know?" }
     ]
   },
   {
