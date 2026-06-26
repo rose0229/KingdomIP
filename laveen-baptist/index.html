@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Laveen Baptist Church — Online Presence Snapshot · Kingdom IP</title>
+<meta name="description" content="An outside-in look at how Laveen Baptist Church shows up online — for a first-time visitor, a searching family, and the wider Laveen community. Prepared by Kingdom IP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#20231f;
+    --paper:#fbf8f2;
+    --paper-2:#f3ecdd;
+    --pine:#1f3d34;
+    --pine-deep:#16302a;
+    --brass:#b0823a;
+    --brass-soft:#caa05a;
+    --clay:#9c5b3b;
+    --stone:#6b6a60;
+    --line:#e4dccb;
+    --line-2:#d8ceba;
+    --good:#2f6d4f;
+    --watch:#b07a2e;
+    --gap:#9c4a39;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Libre Franklin",system-ui,sans-serif;
+    font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.12;margin:0}
+  p{margin:0 0 1em}
+  a{color:var(--pine);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+  a:hover{color:var(--brass)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* ---- eyebrow / tags ---- */
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 14px
+  }
+  .tag{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    padding:3px 9px;border-radius:999px;border:1px solid var(--line-2);color:var(--stone);
+    background:rgba(255,255,255,.5);white-space:nowrap
+  }
+  .tag.good{color:var(--good);border-color:#bcd6c4;background:#eef5ef}
+  .tag.watch{color:var(--watch);border-color:#e6d3ab;background:#f8f0dd}
+  .tag.gap{color:var(--gap);border-color:#e3c3ba;background:#f7e9e4}
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky;top:0;z-index:50;background:rgba(22,48,42,.96);
+    backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid rgba(176,130,58,.35)
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:18px}
+  .brand{display:flex;align-items:center;gap:10px;color:#f3ecdd;text-decoration:none;font-weight:600}
+  .brand .mark{
+    width:26px;height:26px;border:1.5px solid var(--brass-soft);border-radius:50%;
+    display:grid;place-items:center;color:var(--brass-soft);font-family:"Fraunces",serif;font-size:15px;flex:none
+  }
+  .brand small{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(202,160,90,.85);font-weight:500;line-height:1}
+  .brand b{font-family:"Fraunces",serif;font-weight:600;font-size:16px;letter-spacing:.01em;line-height:1.2}
+  .topnav{display:flex;gap:22px}
+  .topnav a{color:rgba(243,236,221,.78);text-decoration:none;font-size:13px;font-weight:500}
+  .topnav a:hover{color:#fff}
+  @media(max-width:780px){.topnav{display:none}}
+
+  /* ---- hero ---- */
+  .hero{background:var(--pine-deep);color:#f4eedf;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 80% at 85% -10%, rgba(176,130,58,.18), transparent 55%),
+      radial-gradient(90% 70% at 10% 120%, rgba(176,130,58,.10), transparent 50%);
+    pointer-events:none}
+  .hero .wrap{padding-top:70px;padding-bottom:64px;position:relative}
+  .hero .eyebrow{color:var(--brass-soft)}
+  .hero h1{font-size:clamp(40px,7vw,76px);font-weight:600;letter-spacing:-.015em;color:#fbf6ea}
+  .hero .sub{font-family:"Fraunces",serif;font-size:clamp(19px,2.6vw,26px);font-weight:400;
+    font-style:italic;color:#e4d9bf;max-width:30ch;margin:18px 0 0;line-height:1.3}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:34px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:rgba(228,217,191,.8)}
+  .hero .meta b{color:#fbf6ea;font-weight:600}
+
+  /* ---- signal meter ---- */
+  .meter{margin-top:40px;max-width:560px}
+  .meter-top{display:flex;justify-content:space-between;align-items:baseline;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(228,217,191,.7);margin-bottom:8px}
+  .meter-track{height:12px;border-radius:999px;background:rgba(255,255,255,.12);
+    overflow:hidden;border:1px solid rgba(176,130,58,.3)}
+  .meter-fill{height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,var(--brass),var(--brass-soft));
+    transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+  .meter-foot{display:flex;justify-content:space-between;margin-top:10px;
+    font-size:12.5px;color:rgba(228,217,191,.85)}
+  .meter-foot b{font-family:"Fraunces",serif;font-size:22px;color:#fbf6ea;display:block;font-weight:600}
+
+  /* ---- sections ---- */
+  section{padding:76px 0;border-top:1px solid var(--line)}
+  section.alt{background:var(--paper-2)}
+  .sec-head{max-width:62ch;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.01em}
+  .sec-head .lead{font-size:18.5px;color:var(--stone);margin-top:14px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;color:var(--brass);font-size:13px;
+    letter-spacing:.15em;display:block;margin-bottom:10px}
+
+  /* ---- executive cards ---- */
+  .read-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.read-grid{grid-template-columns:1fr}}
+  .read-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px;
+    position:relative;overflow:hidden}
+  .read-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+  .read-card.win:before{background:var(--good)}
+  .read-card.drag:before{background:var(--clay)}
+  .read-card.opp:before{background:var(--brass)}
+  .read-card h3{font-size:21px;margin:12px 0 10px}
+  .read-card p{font-size:15.5px;color:#43463f;margin:0}
+
+  /* ---- thesis band ---- */
+  .thesis{background:var(--pine);color:#f4eedf;text-align:center;padding:60px 0}
+  .thesis p{font-family:"Fraunces",serif;font-size:clamp(22px,3.4vw,32px);font-weight:500;
+    line-height:1.32;max-width:24ch;margin:0 auto;color:#fbf6ea}
+  .thesis .eyebrow{color:var(--brass-soft);text-align:center}
+
+  /* ---- "found online" grid ---- */
+  .found-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.found-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.found-grid{grid-template-columns:1fr}}
+  .place{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px 20px 18px}
+  .place-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+  .place h4{font-size:18px}
+  .place p{font-size:14px;color:#4c4f47;margin:0}
+  .place .num{font-family:"Fraunces",serif;font-size:15px;color:var(--pine);font-weight:600}
+
+  /* ---- conflict callout ---- */
+  .conflict{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gap);
+    border-radius:13px;padding:8px 6px}
+  .conflict .row{display:grid;grid-template-columns:minmax(150px,1fr) 1.4fr;gap:6px 22px;
+    padding:16px 22px;border-bottom:1px solid var(--line)}
+  .conflict .row:last-child{border-bottom:none}
+  .conflict .src{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;
+    color:var(--stone);text-transform:uppercase;align-self:center}
+  .conflict .val{font-weight:500;color:var(--ink)}
+  .conflict .val small{display:block;color:var(--stone);font-weight:400;font-size:13px}
+  @media(max-width:560px){.conflict .row{grid-template-columns:1fr;gap:3px}}
+
+  /* ---- scorecard ---- */
+  .score-list{display:flex;flex-direction:column;gap:14px;max-width:720px}
+  .score-row{display:grid;grid-template-columns:1fr;gap:6px}
+  .score-meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .score-meta span{font-size:15.5px;font-weight:500}
+  .score-meta .v{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--stone)}
+  .bar{height:9px;border-radius:999px;background:#e8e0cf;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:999px;
+    transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+  .bar i.lo{background:var(--gap)}
+  .bar i.mid{background:var(--brass)}
+  .bar i.hi{background:var(--good)}
+  .score-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  @media(max-width:680px){.score-summary{grid-template-columns:1fr}}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:22px 24px}
+  .stat .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--stone)}
+  .stat .n{font-family:"Fraunces",serif;font-size:42px;font-weight:600;color:var(--pine);line-height:1.1;margin-top:6px}
+  .stat.gapn .n{color:var(--clay)}
+  .stat p{font-size:13.5px;color:var(--stone);margin:6px 0 0}
+
+  /* ---- findings ---- */
+  .finding{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 26px;margin-bottom:20px}
+  .finding .fnum{font-family:"IBM Plex Mono",monospace;color:var(--brass);font-size:13px;letter-spacing:.12em}
+  .finding h3{font-size:23px;margin:8px 0 16px}
+  .finding dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0}
+  .finding dt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stone);padding-top:3px;white-space:nowrap}
+  .finding dd{margin:0;font-size:15.5px;color:#3f423b}
+  .finding dd.move{color:var(--pine);font-weight:500}
+  @media(max-width:620px){.finding dl{grid-template-columns:1fr;gap:3px 0}
+    .finding dt{padding-top:12px}}
+
+  /* ---- compare ---- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.compare{grid-template-columns:1fr}}
+  .compare .col{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+  .compare .col.you{border-top:4px solid var(--pine)}
+  .compare .col.peer{border-top:4px solid var(--brass)}
+  .compare h4{font-size:19px;margin-bottom:4px}
+  .compare .who{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--stone);margin-bottom:16px}
+  .compare ul{margin:0;padding:0;list-style:none}
+  .compare li{font-size:14.5px;color:#43463f;padding:9px 0 9px 24px;position:relative;border-top:1px solid var(--line)}
+  .compare li:first-child{border-top:none}
+  .compare li:before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:50%}
+  .compare .you li:before{background:var(--pine)}
+  .compare .peer li:before{background:var(--brass)}
+
+  /* ---- quick wins / toolkit ---- */
+  .win-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:16px}
+  .win-card .wh{display:flex;align-items:flex-start;gap:14px;margin-bottom:8px}
+  .win-card .wn{font-family:"Fraunces",serif;font-size:30px;color:var(--brass);font-weight:600;line-height:1;flex:none}
+  .win-card h4{font-size:18.5px;margin-top:2px}
+  .win-card p{font-size:15px;color:#43463f;margin:0 0 14px}
+  .win-pills{display:flex;flex-wrap:wrap;gap:8px}
+  .copyblock{position:relative;background:#16302a;color:#e9e3d2;border-radius:12px;
+    padding:22px 22px 20px;margin:14px 0 0;font-size:14.5px;line-height:1.6}
+  .copyblock h5{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--brass-soft);margin:0 0 12px;font-weight:600}
+  .copyblock ul{margin:0;padding-left:18px}
+  .copyblock li{margin:5px 0}
+  .copyblock .ph{color:var(--brass-soft)}
+  .copybtn{position:absolute;top:14px;right:14px;background:rgba(202,160,90,.16);
+    border:1px solid rgba(202,160,90,.5);color:#e9e3d2;border-radius:7px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+    padding:6px 11px;cursor:pointer;transition:.2s}
+  .copybtn:hover{background:rgba(202,160,90,.3)}
+
+  /* ---- recommendation ---- */
+  .rec{background:var(--pine);color:#f4eedf;border-radius:18px;padding:44px 44px 40px;position:relative;overflow:hidden}
+  .rec:before{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 100% 0,rgba(176,130,58,.2),transparent 55%)}
+  .rec *{position:relative}
+  .rec .eyebrow{color:var(--brass-soft)}
+  .rec h3{font-size:27px;color:#fbf6ea;margin-bottom:6px}
+  .rec .start{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--brass-soft);
+    letter-spacing:.05em;margin-bottom:18px}
+  .rec p{color:#e4d9bf;font-size:16px;max-width:62ch}
+  .rec .closing{font-family:"Fraunces",serif;font-style:italic;font-size:19px;color:#fbf6ea;margin-top:18px}
+
+  /* ---- boundary + sources ---- */
+  .fine{font-size:14px;color:var(--stone);max-width:74ch;border-left:3px solid var(--line-2);padding-left:18px}
+  .sources{columns:2;column-gap:40px;font-size:13.5px;color:var(--stone);margin-top:14px}
+  @media(max-width:680px){.sources{columns:1}}
+  .sources a{font-size:13.5px;word-break:break-word}
+  .sources p{margin:0 0 8px;break-inside:avoid}
+
+  footer{background:var(--pine-deep);color:rgba(228,217,191,.75);padding:46px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center}
+  footer .brand b{color:#fbf6ea}
+  footer small{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.05em}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .meter-fill,.bar i{transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark">K</span>
+      <span><small>Kingdom IP</small><b>Online Presence Snapshot</b></span>
+    </a>
+    <nav class="topnav">
+      <a href="#read">The short version</a>
+      <a href="#found">Where you show up</a>
+      <a href="#reputation">Reputation</a>
+      <a href="#scorecard">Scorecard</a>
+      <a href="#wins">Quick wins</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Outside-In Snapshot · Public information only</p>
+    <h1>Laveen Baptist&nbsp;Church</h1>
+    <p class="sub">How your church shows up to someone who finds you online before they ever walk in.</p>
+    <div class="meta">
+      <span>Prepared by <b>Kingdom IP</b></span>
+      <span>June 2026</span>
+      <span>Laveen, Arizona · est. <b>1939</b></span>
+    </div>
+
+    <div class="meter" aria-label="Overall clarity score">
+      <div class="meter-top"><span>How clear &amp; easy you are online</span><span>Friction</span></div>
+      <div class="meter-track"><div class="meter-fill" id="meterFill" data-w="54"></div></div>
+      <div class="meter-foot">
+        <span><b>54<span style="font-size:13px;color:rgba(228,217,191,.7)">/100</span></b>Clarity score</span>
+        <span style="text-align:right"><b>46<span style="font-size:13px;color:rgba(228,217,191,.7)">/100</span></b>Friction · Moderate</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 1. THE SHORT VERSION -->
+<section id="read">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 — The short version</span>
+      <h2>What we found, in plain terms</h2>
+      <p class="lead">You are a warm, deeply rooted church that the people who already attend genuinely love. The work isn't to become a different church online — it's to help a stranger find, trust, and take a first step toward the church members already know.</p>
+    </div>
+    <div class="read-grid">
+      <div class="read-card win reveal">
+        <span class="tag good">What's working</span>
+        <h3>People already love you</h3>
+        <p>A strong reputation (roughly 4.8 stars across 57 reviews), more than 80 years in Laveen, real sermons online, and a modern app for events and giving. The foundation is genuinely good.</p>
+      </div>
+      <div class="read-card drag reveal">
+        <span class="tag gap">What's holding you back</span>
+        <h3>Strangers get a mixed signal</h3>
+        <p>Your most useful "first visit" details are hard to find, your basic facts (like service times) disagree across the internet, and the loudest button you offer a newcomer is "Give."</p>
+      </div>
+      <div class="read-card opp reveal">
+        <span class="tag">The clearest opportunity</span>
+        <h3>Build one clear front door</h3>
+        <p>Give a curious newcomer one obvious, honest path: here's what Sunday is like, here's where your kids go, here's how to take a first step — the same story everywhere they look.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="thesis">
+  <div class="wrap">
+    <p class="eyebrow">The heart of it</p>
+    <p>The opportunity isn't to do more ministry. It's to make the ministry you already have easier to discover, trust, and join.</p>
+  </div>
+</div>
+
+<!-- 2. FIRST IMPRESSION -->
+<section id="firstvisit" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 — The first thing a newcomer sees</span>
+      <h2>Your welcome speaks to people who already came</h2>
+      <p class="lead">When someone curious lands on your "New Here?" page, it opens like a thank-you note written <em>after</em> a visit — "We are glad you joined us today" — and answers most questions by inviting them to call or stop by the office. For a first-timer deciding whether to come at all, that's a closed door, not an open one.</p>
+    </div>
+    <div class="found-grid">
+      <div class="place reveal">
+        <div class="place-top"><h4>What's missing up front</h4><span class="tag gap">The gap</span></div>
+        <p>The six questions a first-time guest actually has — what's it like, when do I arrive, where do I park, where do my kids go, how long is it, what do I wear — aren't answered together in one place.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>The loudest button is "Give"</h4><span class="tag watch">Needs attention</span></div>
+        <p>Across your site, the one prominent button is "Give Now." A newcomer who isn't ready to give yet has no equally clear "Plan your visit" step to take.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Everything routes to the office</h4><span class="tag watch">Needs attention</span></div>
+        <p>Your kids and youth pages, when a parent has a question, point them to phone the office. Many first-time families won't make that call — they'll just move on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WHERE YOU SHOW UP ONLINE -->
+<section id="found">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 — Where you show up online</span>
+      <h2>You're in a lot of places — and they don't all agree</h2>
+      <p class="lead">A stranger doesn't just visit your website. They Google you, glance at your reviews, peek at your socials, maybe watch a clip. Here's the picture they assemble — and where it gets muddy.</p>
+    </div>
+    <div class="found-grid">
+      <div class="place reveal">
+        <div class="place-top"><h4>Your website</h4><span class="tag watch">Mixed</span></div>
+        <p>The hub for everything — but the most important "first visit" details are buried, and a few pages haven't been refreshed in a while.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Google</h4><span class="num">~4.8★ · 57</span></div>
+        <p>Your strongest asset. A warm, high rating is the first thing most newcomers see — though the profile still carries some out-of-date details.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Facebook</h4><span class="num">766 likes</span></div>
+        <p>Present and occasionally active (events like Easter), but quiet lately — only a handful of people "talking about" it in a given week.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Instagram</h4><span class="num">102 followers</span></div>
+        <p>A real account (51 posts) but small and underused — easy to grow with the photos and moments you already capture on Sundays.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>YouTube</h4><span class="tag watch">Underused</span></div>
+        <p>You livestream and keep a library of past services and even adult Sunday School — a real strength. But the channel still lists old service times and offers a newcomer no "start here."</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Podcast</h4><span class="tag gap">Stalled</span></div>
+        <p>The page points to 2024 episodes on Spotify and promises more links "soon." To a visitor, it reads as something that was started and set down.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Church Center app</h4><span class="tag good">Strong</span></div>
+        <p>You have a real, modern app for events, registrations and giving. Many churches your size don't — this is a quiet advantage worth pointing people to.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Old &amp; duplicate listings</h4><span class="tag gap">Conflicting</span></div>
+        <p>An older version of your site and a separate web page still sit in search results, plus directories that list a former pastor and the wrong hours.</p>
+      </div>
+      <div class="place reveal">
+        <div class="place-top"><h4>Reviews on other sites</h4><span class="tag watch">Thin</span></div>
+        <p>Beyond Google, places like Yelp and FaithStreet show almost-empty or unclaimed profiles — missed chances to put your best foot forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. THE HOURS PROBLEM -->
+<section class="alt" id="hours">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 — The clearest single problem</span>
+      <h2>Your service times don't match across the internet</h2>
+      <p class="lead">This is the most fixable, highest-stakes issue we found. A family deciding to visit this Sunday can land on four different versions of when you meet. Some say 9:00, some say 8:30; some show one service, some show two or three.</p>
+    </div>
+    <div class="conflict reveal">
+      <div class="row"><div class="src">Your website</div><div class="val">Sunday School 9:00 · Worship 10:15 <small>One service</small></div></div>
+      <div class="row"><div class="src">Your YouTube page</div><div class="val">Sunday School 8:30 · Worship 10:05</div></div>
+      <div class="row"><div class="src">An older site still online</div><div class="val">8:30 · 10:05 · plus a 5:00 PM evening service</div></div>
+      <div class="row"><div class="src">A church directory</div><div class="val">8:30 · 10:00 · 6:00 PM <small>and a former pastor still listed</small></div></div>
+    </div>
+    <p class="reveal" style="margin-top:22px;font-size:16px;color:#43463f;max-width:66ch">
+      None of this means anything is wrong inside the church. It means the internet is quietly telling four stories about you. The fix is mostly free — claim and correct each listing so they all say the same true thing — and it directly protects the warm reputation you've earned.</p>
+  </div>
+</section>
+
+<!-- 5. SERMONS & WORSHIP -->
+<section id="sermons">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 — Your sermons &amp; worship online</span>
+      <h2>The teaching is there. A newcomer just can't sample it.</h2>
+      <p class="lead">Visitors increasingly "try" a church by watching before they attend. You're well-positioned for this — and a few small moves would turn a quiet archive into a welcome mat.</p>
+    </div>
+    <div class="compare">
+      <div class="col you reveal" style="border-top-color:var(--good)">
+        <div class="who">The strength</div>
+        <h4>You already do the hard part</h4>
+        <ul>
+          <li>You livestream your Sunday service, in person and online.</li>
+          <li>You keep a library of past services on YouTube.</li>
+          <li>You even post adult Sunday School teaching — a rare, generous touch.</li>
+          <li>People mention strong preaching and a warm mix of modern and traditional music in their reviews.</li>
+        </ul>
+      </div>
+      <div class="col peer reveal" style="border-top-color:var(--clay)">
+        <div class="who">The gap</div>
+        <h4>A first-timer doesn't know where to start</h4>
+        <ul>
+          <li>There's no "watch this first" message, current series, or short welcome clip to sample.</li>
+          <li>Your YouTube page still shows old service times, so the storefront feels out of date.</li>
+          <li>The podcast trails off at 2024 with links "coming soon."</li>
+          <li>Nothing connects a sermon a stranger enjoys to a clear "now plan a visit" step.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. REPUTATION -->
+<section id="reputation" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 — Your reputation</span>
+      <h2>Your people already love you</h2>
+      <p class="lead">This is your single biggest advantage, and it's the thing a newcomer trusts most. The reviews are warm and specific — the gap isn't affection, it's helping strangers discover online what members already feel.</p>
+    </div>
+    <div class="score-summary reveal" style="margin-top:0">
+      <div class="stat"><div class="k">Google rating</div><div class="n">4.8</div><p>from about 57 reviewers</p></div>
+      <div class="stat"><div class="k">Facebook</div><div class="n">94%</div><p>recommend · across 39 reviews</p></div>
+      <div class="stat"><div class="k">In the community since</div><div class="n">1939</div><p>organized as a church in 1943</p></div>
+    </div>
+    <div style="margin-top:32px;max-width:70ch" class="reveal">
+      <p style="font-size:16.5px;color:#3f423b">What people say, in their own words: warm and kind, a real family for every age, strong children's and infant care, good preaching, and worship that blends modern and traditional. One honest theme also surfaces — that newcomers can take a little while to feel fully folded in. That's exactly what a clearer welcome, online and on Sunday, is built to ease.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. COMPETITION -->
+<section id="compare">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 — How you compare nearby</span>
+      <h2>The bar to clear is very reachable</h2>
+      <p class="lead">This isn't about losing to anyone. It's a look at what a similar church down the road does to turn online curiosity into a real visit — so you can see the bar is modest, and you already have the warmth to clear it.</p>
+    </div>
+    <div class="compare">
+      <div class="col you reveal">
+        <h4>Laveen Baptist (today)</h4>
+        <div class="who">You</div>
+        <ul>
+          <li>"New Here?" reads as a post-visit thank-you note.</li>
+          <li>First-visit details are scattered; questions route to a phone call.</li>
+          <li>Service times conflict across the internet.</li>
+          <li>Strong reviews (≈4.8 / 57); quiet social activity.</li>
+        </ul>
+      </div>
+      <div class="col peer reveal">
+        <h4>A peer church nearby</h4>
+        <div class="who">Foothills Baptist · Ahwatukee</div>
+        <ul>
+          <li>A simple "Plan Your Visit" page answers every first-timer question.</li>
+          <li>Clear "Watch Online" and an obvious greeting-team welcome.</li>
+          <li>One consistent set of service times.</li>
+          <li>Similar warmth and rating (≈4.9 / 79); livelier social presence.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:22px;font-size:15.5px;color:var(--stone);max-width:64ch">A neighboring congregation of comparable size and tradition — not a megachurch. The difference is almost entirely in how plainly they answer a newcomer's questions before Sunday.</p>
+  </div>
+</section>
+
+<!-- 8. SCORECARD -->
+<section id="scorecard" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 — The scorecard</span>
+      <h2>A simple read on each part of your online presence</h2>
+      <p class="lead">Scored 1 (hard to use) to 5 (unusually clear) on public information only. This measures clarity and ease for a newcomer — not the quality of your ministry, your people, or your preaching.</p>
+    </div>
+    <div class="score-list reveal" id="scoreList">
+      <div class="score-row"><div class="score-meta"><span>The first impression online</span><span class="v">2 / 5</span></div><div class="bar"><i class="lo" data-w="40"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Clarity of who you are</span><span class="v">3 / 5</span></div><div class="bar"><i class="mid" data-w="60"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>The first-time visitor's path</span><span class="v">2 / 5</span></div><div class="bar"><i class="lo" data-w="40"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Service &amp; visit details (on your site)</span><span class="v">4 / 5</span></div><div class="bar"><i class="hi" data-w="80"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Families &amp; kids information</span><span class="v">3 / 5</span></div><div class="bar"><i class="mid" data-w="60"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Clear next steps</span><span class="v">2 / 5</span></div><div class="bar"><i class="lo" data-w="40"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Sermons &amp; worship online</span><span class="v">3 / 5</span></div><div class="bar"><i class="mid" data-w="60"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Social media presence</span><span class="v">2 / 5</span></div><div class="bar"><i class="lo" data-w="40"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Online reputation</span><span class="v">4 / 5</span></div><div class="bar"><i class="hi" data-w="80"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Showing up consistently everywhere</span><span class="v">1 / 5</span></div><div class="bar"><i class="lo" data-w="20"></i></div></div>
+      <div class="score-row"><div class="score-meta"><span>Established, trustworthy feel</span><span class="v">4 / 5</span></div><div class="bar"><i class="hi" data-w="80"></i></div></div>
+    </div>
+    <div class="score-summary">
+      <div class="stat reveal"><div class="k">Clarity score</div><div class="n">54<span style="font-size:20px;color:var(--stone)">/100</span></div><p>Solid foundation, fixable drag</p></div>
+      <div class="stat gapn reveal"><div class="k">Friction score</div><div class="n">46<span style="font-size:20px;color:var(--stone)">/100</span></div><p>Concentrated in a few areas</p></div>
+      <div class="stat reveal"><div class="k">Priority level</div><div class="n" style="font-size:30px;padding-top:10px">Moderate</div><p>High-value, low-cost fixes available</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. PRIORITY FINDINGS -->
+<section id="findings">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 — Three things worth fixing first</span>
+      <h2>If you only do three things</h2>
+    </div>
+
+    <div class="finding reveal">
+      <span class="fnum">Finding 01</span>
+      <h3>Make one true story show up everywhere</h3>
+      <dl>
+        <dt>What we saw</dt><dd>At least four different versions of your service times live online, plus an old site and directories listing former staff.</dd>
+        <dt>What it creates</dt><dd>A newcomer can't tell which is true — and may arrive at the wrong time, or quietly doubt the rest of what they read.</dd>
+        <dt>Why it matters</dt><dd>It silently undercuts the warm, trustworthy reputation you've already earned.</dd>
+        <dt class="move">First move</dt><dd class="move">Claim and correct your Google listing first, then your YouTube "About," then any directory you can find — all matching your website.</dd>
+      </dl>
+    </div>
+
+    <div class="finding reveal">
+      <span class="fnum">Finding 02</span>
+      <h3>Turn "New Here?" into a real first-visit page</h3>
+      <dl>
+        <dt>What we saw</dt><dd>The page welcomes people as if they've already come, and sends questions to the office phone.</dd>
+        <dt>What it creates</dt><dd>A curious family can't picture their Sunday — so the easiest choice is to not come.</dd>
+        <dt>Why it matters</dt><dd>This single page is where most first decisions are made.</dd>
+        <dt class="move">First move</dt><dd class="move">Add a short "Plan your visit" block answering six questions, and add a "Plan your visit" button next to "Give." (Copy you can paste is below.)</dd>
+      </dl>
+    </div>
+
+    <div class="finding reveal">
+      <span class="fnum">Finding 03</span>
+      <h3>Help parents and seekers take the next step</h3>
+      <dl>
+        <dt>What we saw</dt><dd>Kids and youth pages describe purpose well but skip arrival logistics; the youth events list is empty; sermons aren't tied to a next step.</dd>
+        <dt>What it creates</dt><dd>People who are interested still don't know what to <em>do</em> next without calling.</dd>
+        <dt>Why it matters</dt><dd>Families decide fast and protectively; missing logistics is a common reason a first visit never happens.</dd>
+        <dt class="move">First move</dt><dd class="move">Put check-in details on the kids page, the youth meeting time on the youth page, and a "plan a visit" link under your sermons.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 10. QUICK WINS -->
+<section id="wins" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 — Quick wins you can do this week</span>
+      <h2>Small moves, no budget, no new staff</h2>
+      <p class="lead">None of these require a redesign or a new platform — just edits to what you already have. Confirm the details in brackets against your actual building before publishing.</p>
+    </div>
+
+    <div class="win-card reveal">
+      <div class="wh"><span class="wn">1</span><div><h4>Fix your service times everywhere</h4>
+      <p>Start with Google, then YouTube's "About," then any directory you find. Make them all match your website.</p></div></div>
+      <div class="win-pills"><span class="tag">Effort: Low</span><span class="tag">Owner: Office / Admin</span><span class="tag good">When it's done: every site says the same time</span></div>
+    </div>
+
+    <div class="win-card reveal">
+      <div class="wh"><span class="wn">2</span><div><h4>Add a "Plan Your Visit" block to your New Here page</h4>
+      <p>Six short answers at the very top, before the welcome note.</p></div></div>
+      <div class="win-pills"><span class="tag">Effort: Low</span><span class="tag">Owner: Communications</span><span class="tag good">When it's done: a stranger can plan Sunday without calling</span></div>
+      <div class="copyblock">
+        <button class="copybtn" data-copy="plan">Copy</button>
+        <h5>Paste-ready copy</h5>
+        <div id="plan-text">
+        <p style="margin:0 0 10px"><b>Planning your first visit? Here's everything you need.</b></p>
+        <ul>
+          <li><b>When:</b> Sundays — Sunday School 9:00 AM, Worship 10:15 AM</li>
+          <li><b>How long:</b> About <span class="ph">[confirm length]</span>; worship starts at 10:15.</li>
+          <li><b>Parking:</b> <span class="ph">[confirm — free lot off Dobbins Rd; look for Welcome signs]</span></li>
+          <li><b>Your kids:</b> Childcare (ages 0–4) and Children's Church during the 10:15 service. <span class="ph">[confirm check-in spot]</span></li>
+          <li><b>What to wear:</b> Come as you are — you'll see everything from casual to dressed up.</li>
+          <li><b>Accessibility:</b> <span class="ph">[confirm accessible entrance/seating]</span></li>
+        </ul>
+        <p style="margin:10px 0 0"><b>New? Let us know you're coming →</b> <span class="ph">[link to a simple Church Center form]</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="win-card reveal">
+      <div class="wh"><span class="wn">3</span><div><h4>Add a "Plan Your Visit" button next to "Give"</h4>
+      <p>Give newcomers a front door that's as easy to find as the giving button — at the top of every page.</p></div></div>
+      <div class="win-pills"><span class="tag">Effort: Low</span><span class="tag">Owner: Communications</span><span class="tag good">When it's done: the button is on every page</span></div>
+    </div>
+
+    <div class="win-card reveal">
+      <div class="wh"><span class="wn">4</span><div><h4>Put the real details on your kids &amp; youth pages</h4>
+      <p>Parents shouldn't have to call to learn where to drop off a child or when youth meets.</p></div></div>
+      <div class="win-pills"><span class="tag">Effort: Low–Moderate</span><span class="tag">Owner: Kids / Youth</span><span class="tag good">When it's done: a parent knows exactly what to do on arrival</span></div>
+      <div class="copyblock">
+        <button class="copybtn" data-copy="kids">Copy</button>
+        <h5>Paste-ready copy — kids page</h5>
+        <div id="kids-text">
+        <p style="margin:0">Arriving with kids? Park in the main lot and check in at the Welcome Desk in <span class="ph">[building]</span>, and a volunteer will walk you to your child's room. Children's Church meets during the 10:15 service; childcare for ages 0–4 is available, and there's a cry room at the back of the sanctuary.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="win-card reveal">
+      <div class="wh"><span class="wn">5</span><div><h4>Give your sermons a "start here" and tidy your channels</h4>
+      <p>Pin one welcoming message on YouTube, fix the old service times in your channel description, and add a "plan a visit" link under your sermons.</p></div></div>
+      <div class="win-pills"><span class="tag">Effort: Low</span><span class="tag">Owner: Tech / Communications</span><span class="tag good">When it's done: a first-timer can sample a message and know the next step</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. RECOMMENDATION -->
+<section id="rec">
+  <div class="wrap">
+    <div class="rec reveal">
+      <p class="eyebrow">Where Kingdom IP would start</p>
+      <h3>A focused "Front Door" cleanup</h3>
+      <p class="start">Best first step → fix your listings + rebuild your first-visit page</p>
+      <p>You don't need a big project. You need the internet to tell one true, warm story about you. We'd start by making your basic facts match everywhere a stranger looks, then rebuilding the single page where most first decisions get made. It's low-cost, needs no new hire or platform, and it protects the reputation you've spent decades earning. The deeper questions — what happens after someone visits, and how a first Sunday becomes belonging — are worth exploring next, once the front door is clear.</p>
+      <p class="closing">You've built something people love. This is simply about helping more of your neighbors find it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12. BOUNDARY + SOURCES -->
+<section class="alt" id="sources">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:24px">
+      <span class="sec-num">11 — The fine print</span>
+      <h2>What this is, and what it isn't</h2>
+    </div>
+    <p class="fine reveal">This snapshot is an outside-in look based only on information anyone can find publicly. It is not an evaluation of your leadership, your ministry's health, your theology, your finances, your staff, your volunteers, your child-safety practices, or your discipleship. Its conclusions are informed observations from the outside that a conversation with your team would confirm or correct.</p>
+
+    <div class="reveal" style="margin-top:34px">
+      <span class="eyebrow" style="color:var(--brass)">What we looked at</span>
+      <div class="sources">
+        <p>Church website — <a href="https://www.laveenbaptistchurch.org/">laveenbaptistchurch.org</a> (Home, New Here, Staff, History, Children's, Student, Schedule, Small Groups, Sermons, Podcast)</p>
+        <p>Church Center app — <a href="https://laveenbaptistchurch.churchcenter.com/">laveenbaptistchurch.churchcenter.com</a></p>
+        <p>YouTube — <a href="https://www.youtube.com/@laveenbaptistchurch4545">@laveenbaptistchurch4545</a></p>
+        <p>Facebook — <a href="https://www.facebook.com/lbc5036/">facebook.com/lbc5036</a></p>
+        <p>Instagram — <a href="https://www.instagram.com/laveenbaptistchurch/">@laveenbaptistchurch</a></p>
+        <p>Google / aggregate rating via <a href="https://www.chamberofcommerce.com/business-directory/arizona/laveen/baptist-church/2000272925-laveen-baptist-church">Chamber of Commerce listing</a></p>
+        <p>Directory with outdated details — <a href="https://www.usachurches.org/church/laveen-baptist-church.htm">usachurches.org</a></p>
+        <p>Older / duplicate web pages still indexed (legacy WordPress site and an older site version)</p>
+        <p>Peer comparison — <a href="https://www.foothillsbaptist.org/">Foothills Baptist Church, Ahwatukee</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" style="color:rgba(228,217,191,.85)">
+      <span class="mark">K</span>
+      <span><small>Kingdom IP</small><b style="color:#fbf6ea">Online Presence Snapshot</b></span>
+    </a>
+    <small>Prepared for Laveen Baptist Church · June 2026 · Public information only</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // reveal on scroll
+  var revs = document.querySelectorAll('.reveal');
+  if(rm || !('IntersectionObserver' in window)){
+    revs.forEach(function(e){e.classList.add('in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.12});
+    revs.forEach(function(e){io.observe(e)});
+  }
+
+  // animate hero meter
+  var mf = document.getElementById('meterFill');
+  function fill(){ if(mf) mf.style.width = mf.getAttribute('data-w') + '%'; }
+  if(rm){ if(mf) mf.style.width = mf.getAttribute('data-w')+'%'; } else { setTimeout(fill, 350); }
+
+  // animate scorecard bars when in view
+  var bars = document.querySelectorAll('.bar i');
+  function setBars(){ bars.forEach(function(b){ b.style.width = b.getAttribute('data-w')+'%'; }); }
+  if(rm || !('IntersectionObserver' in window)){ setBars(); }
+  else {
+    var sl = document.getElementById('scoreList');
+    if(sl){
+      var bo = new IntersectionObserver(function(es){
+        es.forEach(function(en){ if(en.isIntersecting){ setBars(); bo.disconnect(); } });
+      },{threshold:.25});
+      bo.observe(sl);
+    } else setBars();
+  }
+
+  // copy buttons
+  document.querySelectorAll('.copybtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('data-copy') + '-text';
+      var el = document.getElementById(id);
+      if(!el) return;
+      var text = el.innerText.replace(/\n{3,}/g,'\n\n').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        var old = btn.textContent; btn.textContent = 'Copied ✓';
+        setTimeout(function(){ btn.textContent = old; }, 1800);
+      }).catch(function(){ btn.textContent = 'Select & copy'; });
+    });
+  });
+})();
+</script>
+</body>
+</html>
