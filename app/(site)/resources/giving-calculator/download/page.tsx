@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import { Download } from "lucide-react";
-import { ButtonLink } from "@/components/button";
 import { SectionHeading } from "@/components/section";
 import { givingCalculator } from "@/lib/content";
+import { getPaidCodeSession } from "@/lib/stripe";
+import { CheckoutButton } from "@/components/checkout-button";
 
 export const metadata: Metadata = {
   title: "Your Giving Calculator Kit",
   robots: { index: false, follow: false }
 };
+
+export const dynamic = "force-dynamic";
 
 const steps = [
   "Download the kit and unzip it.",
@@ -15,15 +18,34 @@ const steps = [
   "Answer its questions. It hands back your finished calculator and steps for your web person."
 ];
 
-export default function GivingCalculatorDownloadPage() {
+export default async function GivingCalculatorDownloadPage({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
+  const { session_id } = await searchParams;
+  const session = await getPaidCodeSession(session_id);
+
+  if (!session) {
+    return (
+      <main className="bg-paper">
+        <section className="bg-ink py-20 text-paper dark-grid">
+          <div className="container">
+            <SectionHeading
+              light
+              eyebrow="Download"
+              title="We couldn't find that order."
+              copy="This link needs a paid order to work. If you just paid, check your email for your download link, or email hello@kingdomip.org and we'll sort it out."
+            />
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="bg-paper">
       <section className="bg-ink py-20 text-paper dark-grid">
         <div className="container">
-          <SectionHeading light eyebrow="Thank you" title="Here's your kit." copy="Bookmark this page. You can come back to download it again." />
+          <SectionHeading light eyebrow="Thank you" title="Here's your kit." copy="We also emailed you this link, so you can come back and download it again." />
           <a
-            href={givingCalculator.kitFile}
-            download
+            href={`/api/download?session_id=${encodeURIComponent(session.id)}`}
             className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-sm bg-lime px-5 py-3 text-sm font-black uppercase tracking-wide text-ink transition hover:bg-bone"
           >
             Download the kit <Download aria-hidden className="h-4 w-4" />
@@ -51,7 +73,7 @@ export default function GivingCalculatorDownloadPage() {
             <h2 className="mt-4 font-display text-3xl font-black">We'll set it up for {givingCalculator.setupPrice}.</h2>
             <p className="mt-3 leading-7">Matched to your brand, connected to your giving page and added to your site.</p>
             <div className="mt-6">
-              <ButtonLink href={givingCalculator.setupCheckoutUrl || "/contact"} variant="dark">Book setup</ButtonLink>
+              <CheckoutButton item="setup" variant="dark">Book setup</CheckoutButton>
             </div>
           </aside>
         </div>

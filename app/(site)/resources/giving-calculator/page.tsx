@@ -1,4 +1,4 @@
-import { ButtonLink } from "@/components/button";
+import { CheckoutButton } from "@/components/checkout-button";
 import { SectionHeading } from "@/components/section";
 import { givingCalculator } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -32,8 +32,6 @@ const faqs = [
 ];
 
 export default function GivingCalculatorPage() {
-  const codeHref = givingCalculator.codeCheckoutUrl || "/contact";
-  const setupHref = givingCalculator.setupCheckoutUrl || "/contact";
 
   return (
     <main className="bg-paper">
@@ -77,7 +75,7 @@ export default function GivingCalculatorPage() {
                 ))}
               </ul>
               <div className="mt-7">
-                <ButtonLink href={codeHref} variant="ghost">Buy the code</ButtonLink>
+                <CheckoutButton item="code" variant="ghost">Buy the code</CheckoutButton>
               </div>
             </article>
 
@@ -91,7 +89,7 @@ export default function GivingCalculatorPage() {
                 ))}
               </ul>
               <div className="mt-7">
-                <ButtonLink href={setupHref} variant="dark">Book setup</ButtonLink>
+                <CheckoutButton item="setup" variant="dark">Book setup</CheckoutButton>
               </div>
             </article>
           </div>
