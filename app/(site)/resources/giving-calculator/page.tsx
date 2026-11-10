@@ -76,7 +76,7 @@ export default function GivingCalculatorPage() {
               </ul>
               <div className="mt-7">
                 <CheckoutButton item="code" variant="ghost">Buy the code</CheckoutButton>
-                <p className="mt-3 text-xs font-bold text-ink/55">30-day refund, no questions. <a className="underline" href="/refunds">Refund policy</a></p>
+                <p className="mt-3 text-xs font-bold text-ink/55">Instant download. All sales final. <a className="underline" href="/refunds">Refund policy</a></p>
               </div>
             </article>
 

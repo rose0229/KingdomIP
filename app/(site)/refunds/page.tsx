@@ -7,15 +7,15 @@ export default function RefundsPage() {
   return (
     <LegalPage
       eyebrow="Refund policy"
-      title="If it doesn't work for you, we'll make it right."
+      title="Refund Policy"
       updated="November 10, 2026"
       intro="Here's how refunds work for the resources and setup services sold on kingdomip.org."
       sections={[
         {
           heading: "Digital resources",
           body: [
-            "This covers downloads like the Giving Calculator code. If it isn't right for you, email us within 30 days of your purchase and we'll refund you in full. You don't need to give a reason.",
-            "If something in the download doesn't work, tell us first if you're willing. Most problems are a quick fix."
+            "This covers downloads like the Giving Calculator code. Because you get the full files the moment you pay, digital resources are not refundable. All sales are final.",
+            "If something in the download doesn't work, email us and we'll help you get it working."
           ]
         },
         {
@@ -36,7 +36,7 @@ export default function RefundsPage() {
         {
           heading: "How to ask for a refund",
           body: [
-            "Email hello@kingdomip.org with the email you used at checkout. We reply within two business days.",
+            "For a setup service, email hello@kingdomip.org with the email you used at checkout. We reply within two business days.",
             "Refunds go back to the original payment method. Your bank may take 5 to 10 business days to show it."
           ]
         }
