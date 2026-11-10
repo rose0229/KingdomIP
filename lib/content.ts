@@ -1,6 +1,7 @@
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/resources", label: "Resources" },
   { href: "/contact", label: "Contact" }
 ];
 
@@ -82,3 +83,16 @@ export const faqs = [
   ["Do you guarantee growth?", "No. Kingdom IP does not promise attendance growth. The work is designed to clarify reality, identify friction, and help leaders choose better priorities."],
   ["Can scope change?", "Yes. Scope can be adjusted after intake when the project needs more context, materials, or implementation support."]
 ];
+
+// Giving Calculator resource. Paste each Stripe Payment Link URL below.
+// Until a link is filled in, its button sends people to the contact form.
+export const givingCalculator = {
+  codePrice: "$10",
+  setupPrice: "$50",
+  codeCheckoutUrl: "",
+  setupCheckoutUrl: "",
+  downloadPagePath: "/resources/giving-calculator/download-f82b1035e920",
+  setupThanksPath: "/resources/giving-calculator/setup-thanks",
+  kitFile: "/downloads/f82b1035e920/giving-calculator-kit.zip",
+  liveExampleUrl: "https://www.orbitchurch.org/give/"
+};
