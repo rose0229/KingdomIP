@@ -98,7 +98,10 @@ export function CheckoutButton({
             >
               <X aria-hidden className="h-5 w-5" />
             </button>
-            <div className="pt-8">
+            <p className="pr-10 text-xs leading-5 text-ink/60">
+              By paying you agree to our <a className="underline" href="/terms" target="_blank" rel="noopener">Terms</a> and <a className="underline" href="/refunds" target="_blank" rel="noopener">Refund Policy</a>.
+            </p>
+            <div className="pt-4">
               {error ? (
                 <p className="p-4 font-bold text-ink">{error}</p>
               ) : stripe ? (

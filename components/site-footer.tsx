@@ -38,7 +38,11 @@ export function SiteFooter() {
       <div className="border-t border-white/10 py-5">
         <div className="container flex flex-col gap-2 text-xs text-paper/55 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Kingdom IP. All rights reserved.</p>
-          <p>Built for diagnosis, clarity, and action.</p>
+          <p className="flex gap-4">
+            <Link className="hover:text-lime" href="/terms">Terms</Link>
+            <Link className="hover:text-lime" href="/privacy">Privacy</Link>
+            <Link className="hover:text-lime" href="/refunds">Refunds</Link>
+          </p>
         </div>
       </div>
     </footer>

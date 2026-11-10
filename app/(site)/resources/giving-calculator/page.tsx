@@ -76,6 +76,7 @@ export default function GivingCalculatorPage() {
               </ul>
               <div className="mt-7">
                 <CheckoutButton item="code" variant="ghost">Buy the code</CheckoutButton>
+                <p className="mt-3 text-xs font-bold text-ink/55">30-day refund, no questions. <a className="underline" href="/refunds">Refund policy</a></p>
               </div>
             </article>
 
@@ -90,6 +91,7 @@ export default function GivingCalculatorPage() {
               </ul>
               <div className="mt-7">
                 <CheckoutButton item="setup" variant="dark">Book setup</CheckoutButton>
+                <p className="mt-3 text-xs font-bold text-ink/70">Full refund if we can't get it working. <a className="underline" href="/refunds">Refund policy</a></p>
               </div>
             </article>
           </div>
