@@ -90,6 +90,7 @@ section[id], article[id] { scroll-margin-top: 6rem; }
 .timeline-step { display: grid; min-height: 78vh; grid-template-columns: minmax(0,.85fr) minmax(280px,1.15fr); align-items: center; gap: clamp(1.5rem,4vw,4rem); border-top: 1px solid rgba(255,255,255,.17); padding: 4rem 0; scroll-margin-top: 6rem; }
 .timeline-step:last-child { border-bottom: 1px solid rgba(255,255,255,.17); }
 .timeline-step-copy { max-width: 27rem; }
+.timeline-step:focus-visible { outline: none; }
 .gc-demo { display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); align-items: start; gap: clamp(2rem,4vw,4rem); color: #1d1d1f; }
 .gc-theology { padding: .5rem 0; }
 .gc-eyebrow { margin: 0 0 .65rem; color: #766e5c; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
