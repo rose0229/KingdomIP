@@ -2,45 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Palette, designed in OKLCH and written as sRGB so every browser gets it.
+  Light: paper oklch(0.985 0.006 85), bone oklch(0.955 0.012 80),
+         ink oklch(0.24 0.03 260), accent oklch(0.53 0.15 40).
+  Dark:  paper oklch(0.19 0.012 260), bone oklch(0.235 0.015 260),
+         ink oklch(0.94 0.01 85), accent oklch(0.76 0.13 55).
+  Checked: body text 15:1+, accent text 4.9:1+, button text 5.6:1+ in both.
+*/
 :root {
-  color-scheme: dark;
-  --font-inter: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-space: "Arial Black", Impact, Inter, ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light dark;
+  --paper: 252 250 246;
+  --bone: 244 239 231;
+  --ink: 23 31 46;
+  --accent: 176 69 26;
+  --on-accent: 255 255 255;
 }
 
-* {
-  box-sizing: border-box;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: 17 20 25;
+    --bone: 26 30 37;
+    --ink: 238 235 228;
+    --accent: 240 153 91;
+    --on-accent: 33 18 9;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  /* Keeps focused or linked content clear of the sticky header. */
+  scroll-padding-top: 6rem;
 }
 
 body {
   margin: 0;
-  background: #111111;
-  color: #111111;
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
 }
 
 ::selection {
-  background: #d8ff3f;
-  color: #111111;
+  background: rgb(var(--accent));
+  color: rgb(var(--on-accent));
+}
+
+/* One focus style everywhere, visible on every background in both themes. */
+:focus-visible {
+  outline: 2px solid rgb(var(--accent));
+  outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-.grid-lines {
-  background-image:
-    linear-gradient(rgba(17, 17, 17, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 17, 17, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
+/* Gentle reveal as cards scroll into view. CSS only, no script, and off for
+   anyone who has asked their device to reduce motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+
+  @view-transition {
+    navigation: auto;
+  }
 }
 
-.dark-grid {
-  background-image:
-    linear-gradient(rgba(255, 250, 240, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 250, 240, 0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

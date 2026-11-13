@@ -9,19 +9,17 @@ type ButtonLinkProps = {
   className?: string;
 };
 
+export const buttonStyles = {
+  base: "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-200 ease-calm",
+  primary: "bg-accent text-on-accent hover:opacity-90",
+  secondary: "border border-ink/25 text-ink hover:border-ink",
+  ghost: "border border-ink/25 text-ink hover:border-ink",
+  dark: "bg-ink text-paper hover:opacity-90"
+};
+
 export function ButtonLink({ href, children, variant = "primary", className }: ButtonLinkProps) {
   return (
-    <Link
-      href={href}
-      className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-black uppercase tracking-wide transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime",
-        variant === "primary" && "bg-lime text-ink hover:bg-bone",
-        variant === "secondary" && "border border-lime/60 text-lime hover:bg-lime hover:text-ink",
-        variant === "ghost" && "border border-ink/15 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper",
-        variant === "dark" && "bg-ink text-paper hover:bg-cobalt",
-        className
-      )}
-    >
+    <Link href={href} className={cn(buttonStyles.base, buttonStyles[variant], className)}>
       {children}
       <ArrowRight aria-hidden className="h-4 w-4" />
     </Link>

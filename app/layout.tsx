@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { Fraunces, Inter } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { JsonLd } from "@/components/json-ld";
 import { siteUrl } from "@/lib/utils";
 import "./globals.css";
+
+// Two variable fonts: Fraunces for headlines, Inter for everything else.
+const display = Fraunces({ subsets: ["latin"], variable: "--font-display", axes: ["opsz", "SOFT"], display: "swap" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -22,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
         <JsonLd
           data={{

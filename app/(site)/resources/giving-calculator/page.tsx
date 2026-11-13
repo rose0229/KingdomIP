@@ -49,21 +49,20 @@ const faqs = [
 export default function GivingCalculatorPage() {
   return (
     <main className="bg-paper">
-      <section className="bg-ink py-20 text-paper dark-grid">
+      <section className="border-b border-ink/10 py-20 md:py-28">
         <div className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <SectionHeading
-            light
+          <SectionHeading as="h1"
             eyebrow="Resource"
             title="Giving Calculator"
             copy="A give-page tool that teaches the why of generosity, shows people their amount per paycheck and hands them to your giving page with the number ready."
           />
-          <div className="border border-lime/40 bg-white/5 p-5 text-paper/70">
-            <p className="font-display text-5xl font-black text-lime">Nearly 2x</p>
-            <p className="mt-3 leading-7 text-paper">
+          <div className="rounded-lg border border-accent/40 bg-bone p-5 text-ink/70">
+            <p className="font-display text-5xl font-semibold text-accent">Nearly 2x</p>
+            <p className="mt-3 leading-7 text-ink">
               Recurring giving at Orbit Church nearly doubled in the three months after we put this on our give page.
             </p>
-            <p className="mt-2 text-sm font-bold text-paper/60">Matt Rose, Orbit Church, Buckeye, Arizona</p>
-            <a className="mt-4 inline-block text-sm font-black uppercase text-lime hover:text-bone" href={givingCalculator.liveExampleUrl} target="_blank" rel="noopener">
+            <p className="mt-2 text-sm font-bold text-ink/70">Matt Rose, Orbit Church, Buckeye, Arizona</p>
+            <a className="mt-4 inline-block text-sm font-semibold uppercase text-accent hover:opacity-80" href={givingCalculator.liveExampleUrl} target="_blank" rel="noopener">
               Try it on Orbit's give page ↗
             </a>
           </div>
@@ -76,31 +75,31 @@ export default function GivingCalculatorPage() {
             <SectionHeading eyebrow="What it does" title="The next step, made obvious." />
             <ul className="mt-8 space-y-4">
               {features.map((item) => (
-                <li key={item} className="border-l-4 border-cobalt pl-4 text-lg leading-8 text-ink/80">{item}</li>
+                <li key={item} className="border-l-2 border-accent pl-4 text-lg leading-8 text-ink/80">{item}</li>
               ))}
             </ul>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <article className="flex flex-col border border-ink/15 bg-bone p-6">
-              <p className="text-xs font-black uppercase text-cobalt">Do it yourself</p>
-              <h2 className="mt-4 font-display text-3xl font-black">Get the code</h2>
-              <p className="mt-2 font-display text-5xl font-black">{givingCalculator.codePrice}</p>
+            <article className="reveal flex flex-col rounded-lg border border-ink/10 bg-bone p-6">
+              <p className="text-xs font-semibold uppercase text-accent">Do it yourself</p>
+              <h2 className="mt-4 font-display text-3xl font-semibold">Get the code</h2>
+              <p className="mt-2 font-display text-5xl font-semibold">{givingCalculator.codePrice}</p>
               <ul className="mt-6 flex-1 space-y-3">
                 {["The calculator, one HTML file", "Embed code for website builders", "A setup guide you can drop into ChatGPT or Claude", "Yours to keep. No subscription"].map((item) => (
-                  <li className="border-t border-ink/15 pt-3 text-sm font-bold" key={item}>{item}</li>
+                  <li className="border-t border-ink/10 pt-3 text-sm font-bold" key={item}>{item}</li>
                 ))}
               </ul>
               <div className="mt-7">
                 <CheckoutButton item="code" variant="ghost">Buy the code</CheckoutButton>
-                <p className="mt-3 text-xs font-bold text-ink/55">Instant download. All sales final. <a className="underline" href="/refunds">Refund policy</a></p>
+                <p className="mt-3 text-xs font-bold text-ink/70">Instant download. All sales final. <a className="underline" href="/refunds">Refund policy</a></p>
               </div>
             </article>
 
-            <article className="flex flex-col border border-ink bg-lime p-6 text-ink shadow-line">
-              <p className="text-xs font-black uppercase text-cobalt">Done for you</p>
-              <h2 className="mt-4 font-display text-3xl font-black">Have us set it up</h2>
-              <p className="mt-2 font-display text-5xl font-black">{givingCalculator.setupPrice}</p>
+            <article className="flex flex-col rounded-lg border-2 border-accent bg-paper p-6 text-ink">
+              <p className="text-xs font-semibold uppercase text-accent">Done for you</p>
+              <h2 className="mt-4 font-display text-3xl font-semibold">Have us set it up</h2>
+              <p className="mt-2 font-display text-5xl font-semibold">{givingCalculator.setupPrice}</p>
               <ul className="mt-6 flex-1 space-y-3">
                 {["Matched to your colors and fonts", "Connected to your giving page", "Added to your site, or exact steps for your web person", "One round of tweaks"].map((item) => (
                   <li className="border-t border-ink/20 pt-3 text-sm font-bold" key={item}>{item}</li>
@@ -115,14 +114,14 @@ export default function GivingCalculatorPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-paper">
+      <section className="bg-bone py-16">
         <div className="container">
-          <SectionHeading light eyebrow="Why it works" title="Not another tithe calculator." />
+          <SectionHeading eyebrow="Why it works" title="Not another tithe calculator." />
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
             {different.map((item) => (
-              <div key={item.title} className="border border-white/15 bg-white/5 p-6">
-                <h3 className="font-display text-2xl font-black text-lime">{item.title}</h3>
-                <p className="mt-3 leading-7 text-paper/70">{item.copy}</p>
+              <div key={item.title} className="rounded-lg border border-ink/10 bg-paper p-6">
+                <h3 className="font-display text-2xl font-semibold text-accent">{item.title}</h3>
+                <p className="mt-3 leading-7 text-ink/70">{item.copy}</p>
               </div>
             ))}
           </div>
@@ -134,8 +133,8 @@ export default function GivingCalculatorPage() {
           <SectionHeading eyebrow="Questions" title="Before you buy." />
           <dl className="mt-8 grid gap-5 lg:grid-cols-3">
             {faqs.map((item) => (
-              <div key={item.q} className="border border-ink/15 bg-paper p-6">
-                <dt className="font-display text-2xl font-black">{item.q}</dt>
+              <div key={item.q} className="rounded-lg border border-ink/10 bg-paper p-6">
+                <dt className="font-display text-2xl font-semibold">{item.q}</dt>
                 <dd className="mt-3 leading-7 text-ink/70">{item.a}</dd>
               </div>
             ))}

@@ -1,15 +1,18 @@
 import { cn } from "@/lib/utils";
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("text-xs font-black uppercase tracking-[0.2em] text-cobalt", className)}>{children}</p>;
+  return <p className={cn("text-xs font-semibold uppercase tracking-[0.18em] text-accent", className)}>{children}</p>;
 }
 
-export function SectionHeading({ eyebrow, title, copy, light = false }: { eyebrow?: string; title: string; copy?: string; light?: boolean }) {
+// `light` is kept so older pages compile; every section is on a light or
+// theme-aware background now, so it no longer changes anything.
+export function SectionHeading({ eyebrow, title, copy, as = "h2" }: { eyebrow?: string; title: string; copy?: string; light?: boolean; as?: "h1" | "h2" }) {
+  const Heading = as;
   return (
     <div className="max-w-3xl">
-      {eyebrow ? <Eyebrow className={light ? "text-lime" : undefined}>{eyebrow}</Eyebrow> : null}
-      <h2 className={cn("mt-3 font-display text-4xl font-black leading-[0.95] tracking-normal md:text-6xl", light ? "text-paper" : "text-ink")}>{title}</h2>
-      {copy ? <p className={cn("mt-5 text-lg leading-8", light ? "text-paper/70" : "text-ink/70")}>{copy}</p> : null}
+      {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
+      <Heading className="mt-3 font-display text-4xl font-semibold leading-[1.02] tracking-tight text-ink md:text-6xl">{title}</Heading>
+      {copy ? <p className="mt-5 text-lg leading-8 text-ink/70">{copy}</p> : null}
     </div>
   );
 }

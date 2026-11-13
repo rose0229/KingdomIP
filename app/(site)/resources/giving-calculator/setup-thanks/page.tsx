@@ -22,9 +22,9 @@ const ready = [
 export default function SetupThanksPage() {
   return (
     <main className="bg-paper">
-      <section className="bg-ink py-20 text-paper dark-grid">
+      <section className="border-b border-ink/10 py-20 md:py-28">
         <div className="container">
-          <SectionHeading light eyebrow="You're booked" title="Thanks. We've got it from here." copy="Your payment went through and your setup details came with it." />
+          <SectionHeading as="h1" eyebrow="You're booked" title="Thanks. We've got it from here." copy="Your payment went through and your setup details came with it." />
         </div>
       </section>
       <section className="py-16">
@@ -33,8 +33,8 @@ export default function SetupThanksPage() {
             <SectionHeading eyebrow="What happens next" title="Four steps." />
             <ol className="mt-8 space-y-4">
               {next.map((step, i) => (
-                <li key={step} className="flex gap-4 border-t border-ink/15 pt-4 text-lg leading-8 text-ink/80">
-                  <span className="font-display text-2xl font-black text-cobalt">0{i + 1}</span>
+                <li key={step} className="flex gap-4 border-t border-ink/10 pt-4 text-lg leading-8 text-ink/80">
+                  <span className="font-display text-2xl font-semibold text-accent">0{i + 1}</span>
                   <span>{step}</span>
                 </li>
               ))}
@@ -44,10 +44,10 @@ export default function SetupThanksPage() {
             <SectionHeading eyebrow="Have these ready" title="Helpful, not required." />
             <ul className="mt-8 space-y-4">
               {ready.map((item) => (
-                <li key={item} className="border-l-4 border-cobalt pl-4 text-lg leading-8 text-ink/80">{item}</li>
+                <li key={item} className="border-l-2 border-accent pl-4 text-lg leading-8 text-ink/80">{item}</li>
               ))}
             </ul>
-            <p className="mt-8 leading-7 text-ink/65">Questions in the meantime? Email hello@kingdomip.org.</p>
+            <p className="mt-8 leading-7 text-ink/70">Questions in the meantime? Email hello@kingdomip.org.</p>
           </div>
         </div>
       </section>

@@ -1,38 +1,40 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { navItems } from "@/lib/content";
 import { ButtonLink } from "@/components/button";
 import { Logo } from "@/components/logo";
+import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/15 bg-ink/95 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur">
-      <div className="container flex h-20 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/85 backdrop-blur">
+      <div className="container flex h-16 items-center justify-between gap-4">
         <Logo />
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-sm border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-paper/80 transition hover:border-lime/50 hover:bg-lime/10 hover:text-lime"
+              aria-current={pathname.startsWith(item.href) ? "page" : undefined}
+              className={cn("py-2 text-sm font-medium text-ink/70 transition hover:text-ink", pathname.startsWith(item.href) && "text-ink underline decoration-accent decoration-2 underline-offset-8")}
             >
               {item.label}
             </Link>
           ))}
-        </nav>
-        <div className="hidden lg:block">
-          <ButtonLink href="/contact" className="min-h-10 px-4 py-2 text-xs">
+          <ButtonLink href="/contact" className="min-h-10 px-5 py-2">
             Start a project
           </ButtonLink>
-        </div>
+        </nav>
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-paper lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"
           aria-label="Toggle navigation"
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
@@ -41,15 +43,15 @@ export function SiteHeader() {
         </button>
       </div>
       {open ? (
-        <div className="border-t border-white/10 bg-ink lg:hidden">
+        <div className="border-t border-ink/10 bg-paper md:hidden">
           <nav className="container grid gap-1 py-4" aria-label="Mobile navigation">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="border-b border-white/10 py-3 text-base font-bold text-paper" onClick={() => setOpen(false)}>
+              <Link key={item.href} href={item.href} className="border-b border-ink/10 py-3 text-base font-medium text-ink" onClick={() => setOpen(false)}>
                 {item.label}
               </Link>
             ))}
             <div onClick={() => setOpen(false)}>
-              <ButtonLink href="/contact" className="mt-3">
+              <ButtonLink href="/contact" className="mt-4 w-full">
                 Start a project
               </ButtonLink>
             </div>

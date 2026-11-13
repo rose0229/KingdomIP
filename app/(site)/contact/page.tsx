@@ -11,9 +11,9 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
 
   return (
     <main className="bg-paper">
-      <section className="bg-ink py-20 text-paper dark-grid">
+      <section className="border-b border-ink/10 py-20 md:py-28">
         <div className="container">
-          <SectionHeading light eyebrow="Start a project" title="Tell us what's stuck." copy="One short form. We reply within two business days." />
+          <SectionHeading as="h1" eyebrow="Start a project" title="Tell us what's stuck." copy="One short form. We reply within two business days." />
         </div>
       </section>
       <section className="py-16">

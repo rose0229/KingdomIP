@@ -59,18 +59,17 @@ const faqs = [
 export default function SermonPublishingPage() {
   return (
     <main className="bg-paper">
-      <section className="bg-ink py-20 text-paper dark-grid">
+      <section className="border-b border-ink/10 py-20 md:py-28">
         <div className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <SectionHeading
-            light
+          <SectionHeading as="h1"
             eyebrow="Resource"
             title="Sermon Publishing"
             copy="One volunteer does four things on Sunday. Within about half an hour, the sermon is on your website with a transcript, a summary, a discussion guide, a podcast episode and a Facebook post. No monthly fee to us."
           />
-          <div className="border border-white/15 bg-white/5 p-5 text-paper/70">
-            <p className="font-bold text-paper">See it on a live church site</p>
+          <div className="rounded-lg border border-ink/10 bg-bone p-5 text-ink/70">
+            <p className="font-bold text-ink">See it on a live church site</p>
             <p className="mt-2 leading-7">Orbit Church in Buckeye, Arizona publishes its sermons this way every Sunday. Open any recent sermon to see the transcript, summary and discussion guide.</p>
-            <a className="mt-4 inline-block text-sm font-black uppercase text-lime hover:text-bone" href={sermonPublishing.liveExampleUrl} target="_blank" rel="noopener">
+            <a className="mt-4 inline-block text-sm font-semibold uppercase text-accent hover:opacity-80" href={sermonPublishing.liveExampleUrl} target="_blank" rel="noopener">
               Open the live example ↗
             </a>
           </div>
@@ -83,33 +82,33 @@ export default function SermonPublishingPage() {
             <SectionHeading eyebrow="Sunday" title="Four steps from a person." />
             <ol className="mt-8 space-y-4">
               {sunday.map((step, i) => (
-                <li key={step} className="flex gap-4 border-t border-ink/15 pt-4 text-lg leading-8 text-ink/80">
-                  <span className="font-display text-2xl font-black text-cobalt">0{i + 1}</span>
+                <li key={step} className="flex gap-4 border-t border-ink/10 pt-4 text-lg leading-8 text-ink/80">
+                  <span className="font-display text-2xl font-semibold text-accent">0{i + 1}</span>
                   <span>{step}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-8 leading-7 text-ink/65">On Monday night, someone spends about ten minutes checking it.</p>
+            <p className="mt-8 leading-7 text-ink/70">On Monday night, someone spends about ten minutes checking it.</p>
           </div>
           <div>
             <SectionHeading eyebrow="Then, on its own" title="Everything else." />
             <ul className="mt-8 space-y-4">
               {automatic.map((item) => (
-                <li key={item} className="border-l-4 border-cobalt pl-4 text-lg leading-8 text-ink/80">{item}</li>
+                <li key={item} className="border-l-2 border-accent pl-4 text-lg leading-8 text-ink/80">{item}</li>
               ))}
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="bg-ink py-16 text-paper">
+      <section className="bg-bone py-16">
         <div className="container">
-          <SectionHeading light eyebrow="Why it's different" title="Built once. Yours for good." />
+          <SectionHeading eyebrow="Why it's different" title="Built once. Yours for good." />
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
             {different.map((item) => (
-              <div key={item.title} className="border border-white/15 bg-white/5 p-6">
-                <h3 className="font-display text-2xl font-black text-lime">{item.title}</h3>
-                <p className="mt-3 leading-7 text-paper/70">{item.copy}</p>
+              <div key={item.title} className="rounded-lg border border-ink/10 bg-paper p-6">
+                <h3 className="font-display text-2xl font-semibold text-accent">{item.title}</h3>
+                <p className="mt-3 leading-7 text-ink/70">{item.copy}</p>
               </div>
             ))}
           </div>
@@ -118,10 +117,10 @@ export default function SermonPublishingPage() {
 
       <section className="bg-bone py-16">
         <div className="container grid gap-5 md:grid-cols-2">
-          <article className="flex flex-col border border-ink/15 bg-paper p-6">
-            <p className="text-xs font-black uppercase text-cobalt">Do it yourself</p>
-            <h2 className="mt-4 font-display text-3xl font-black">Get the kit</h2>
-            <p className="mt-2 font-display text-5xl font-black">{sermonPublishing.kitPrice}</p>
+          <article className="reveal flex flex-col rounded-lg border border-ink/10 bg-paper p-6">
+            <p className="text-xs font-semibold uppercase text-accent">Do it yourself</p>
+            <h2 className="mt-4 font-display text-3xl font-semibold">Get the kit</h2>
+            <p className="mt-2 font-display text-5xl font-semibold">{sermonPublishing.kitPrice}</p>
             <ul className="mt-6 flex-1 space-y-3">
               {[
                 "The full build prompt for Claude Code or Codex",
@@ -130,19 +129,19 @@ export default function SermonPublishingPage() {
                 "Built on your accounts and keys, never ours",
                 "Pay once. No subscription"
               ].map((item) => (
-                <li className="border-t border-ink/15 pt-3 text-sm font-bold" key={item}>{item}</li>
+                <li className="border-t border-ink/10 pt-3 text-sm font-bold" key={item}>{item}</li>
               ))}
             </ul>
             <div className="mt-7">
               <CheckoutButton item="sermon-kit" variant="ghost">Buy the kit</CheckoutButton>
-              <p className="mt-3 text-xs font-bold text-ink/55">Instant download. All sales final. <a className="underline" href="/refunds">Refund policy</a></p>
+              <p className="mt-3 text-xs font-bold text-ink/70">Instant download. All sales final. <a className="underline" href="/refunds">Refund policy</a></p>
             </div>
           </article>
 
-          <article className="flex flex-col border border-ink bg-lime p-6 text-ink shadow-line">
-            <p className="text-xs font-black uppercase text-cobalt">Done with you</p>
-            <h2 className="mt-4 font-display text-3xl font-black">Have us build it with you</h2>
-            <p className="mt-2 font-display text-5xl font-black">{sermonPublishing.setupPrice}</p>
+          <article className="flex flex-col rounded-lg border-2 border-accent bg-paper p-6 text-ink">
+            <p className="text-xs font-semibold uppercase text-accent">Done with you</p>
+            <h2 className="mt-4 font-display text-3xl font-semibold">Have us build it with you</h2>
+            <p className="mt-2 font-display text-5xl font-semibold">{sermonPublishing.setupPrice}</p>
             <ul className="mt-6 flex-1 space-y-3">
               {[
                 "Live video sessions with you and whoever holds your accounts",
@@ -167,8 +166,8 @@ export default function SermonPublishingPage() {
           <SectionHeading eyebrow="Questions" title="Before you buy." />
           <dl className="mt-8 grid gap-5 lg:grid-cols-3">
             {faqs.map((item) => (
-              <div key={item.q} className="border border-ink/15 bg-bone p-6">
-                <dt className="font-display text-2xl font-black">{item.q}</dt>
+              <div key={item.q} className="rounded-lg border border-ink/10 bg-bone p-6">
+                <dt className="font-display text-2xl font-semibold">{item.q}</dt>
                 <dd className="mt-3 leading-7 text-ink/70">{item.a}</dd>
               </div>
             ))}

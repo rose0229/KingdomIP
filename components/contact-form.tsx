@@ -5,8 +5,8 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const field = "mt-2 w-full rounded-sm border border-ink/20 bg-white px-4 py-3 text-base text-ink focus:border-cobalt focus:outline-none";
-const label = "block text-sm font-black uppercase tracking-wide text-ink";
+const field = "mt-2 w-full rounded-lg border border-ink/20 bg-paper px-4 py-3 text-base text-ink focus:border-accent focus:outline-none";
+const label = "block text-sm font-semibold text-ink";
 
 export function ContactForm({ services, preset }: { services: string[]; preset: string }) {
   const [status, setStatus] = useState<Status>("idle");
@@ -33,9 +33,9 @@ export function ContactForm({ services, preset }: { services: string[]; preset: 
 
   if (status === "success") {
     return (
-      <div className="border border-ink bg-lime p-8 text-ink">
+      <div className="rounded-lg border-2 border-accent bg-bone p-8 text-ink">
         <CheckCircle2 aria-hidden className="h-8 w-8" />
-        <h2 className="mt-4 font-display text-3xl font-black">Got it. Thanks.</h2>
+        <h2 className="mt-4 font-display text-3xl font-semibold">Got it. Thanks.</h2>
         <p className="mt-2 leading-7">We'll reply within two business days.</p>
       </div>
     );
@@ -54,7 +54,7 @@ export function ContactForm({ services, preset }: { services: string[]; preset: 
         </label>
       </div>
       <label className={label}>
-        Church or organization <span className="font-bold normal-case text-ink/50">(optional)</span>
+        Church or organization <span className="font-normal text-ink/70">(optional)</span>
         <input className={field} name="organization" autoComplete="organization" />
       </label>
       <label className={label}>
@@ -73,11 +73,11 @@ export function ContactForm({ services, preset }: { services: string[]; preset: 
         <textarea className={`${field} min-h-40`} name="message" required minLength={5} placeholder="A few sentences is plenty. Links help." />
       </label>
       <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-      {status === "error" ? <p className="font-bold text-orange-700" role="alert">{error}</p> : null}
+      {status === "error" ? <p className="font-bold text-accent" role="alert">{error}</p> : null}
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-sm bg-ink px-6 py-3 text-sm font-black uppercase tracking-wide text-paper transition hover:bg-cobalt disabled:opacity-60"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90 disabled:opacity-60"
       >
         {status === "loading" ? <Loader2 aria-hidden className="h-4 w-4 animate-spin" /> : null}
         Send

@@ -25,10 +25,9 @@ export default async function SermonPublishingDownloadPage({ searchParams }: { s
   if (!order) {
     return (
       <main className="bg-paper">
-        <section className="bg-ink py-20 text-paper dark-grid">
+        <section className="border-b border-ink/10 py-20 md:py-28">
           <div className="container">
-            <SectionHeading
-              light
+            <SectionHeading as="h1"
               eyebrow="Download"
               title="We couldn't find that order."
               copy="This link needs a paid order to work. If you just paid, check your email for your download link, or email hello@kingdomip.org and we'll sort it out."
@@ -41,12 +40,12 @@ export default async function SermonPublishingDownloadPage({ searchParams }: { s
 
   return (
     <main className="bg-paper">
-      <section className="bg-ink py-20 text-paper dark-grid">
+      <section className="border-b border-ink/10 py-20 md:py-28">
         <div className="container">
-          <SectionHeading light eyebrow="Thank you" title="Here's your kit." copy="We also emailed you this link, so you can come back and download it again." />
+          <SectionHeading as="h1" eyebrow="Thank you" title="Here's your kit." copy="We also emailed you this link, so you can come back and download it again." />
           <a
             href={`/api/download?session_id=${encodeURIComponent(order.session.id)}`}
-            className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-sm bg-lime px-5 py-3 text-sm font-black uppercase tracking-wide text-ink transition hover:bg-bone"
+            className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
           >
             Download the kit <Download aria-hidden className="h-4 w-4" />
           </a>
@@ -58,22 +57,22 @@ export default async function SermonPublishingDownloadPage({ searchParams }: { s
             <SectionHeading eyebrow="Three steps" title="Getting it built." />
             <ol className="mt-8 space-y-4">
               {steps.map((step, i) => (
-                <li key={step} className="flex gap-4 border-t border-ink/15 pt-4 text-lg leading-8 text-ink/80">
-                  <span className="font-display text-2xl font-black text-cobalt">0{i + 1}</span>
+                <li key={step} className="flex gap-4 border-t border-ink/10 pt-4 text-lg leading-8 text-ink/80">
+                  <span className="font-display text-2xl font-semibold text-accent">0{i + 1}</span>
                   <span>{step}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-8 leading-7 text-ink/65">
+            <p className="mt-8 leading-7 text-ink/70">
               Rather fill in a form? Open sermon-publishing-kit.html in a browser. It writes the prompt with your answers already in it and prints a card for your Sunday volunteer.
             </p>
-            <p className="mt-4 leading-7 text-ink/65">
+            <p className="mt-4 leading-7 text-ink/70">
               Have your admins nearby for the first session: YouTube channel owner, website admin, Facebook Page admin and whoever runs your podcast host.
             </p>
           </div>
-          <aside className="border border-ink bg-lime p-6 text-ink shadow-line">
-            <p className="text-xs font-black uppercase text-cobalt">Rather not do it yourself?</p>
-            <h2 className="mt-4 font-display text-3xl font-black">We'll build it with you for {sermonPublishing.setupPrice}.</h2>
+          <aside className="rounded-lg border-2 border-accent bg-paper p-6 text-ink">
+            <p className="text-xs font-semibold uppercase text-accent">Rather not do it yourself?</p>
+            <h2 className="mt-4 font-display text-3xl font-semibold">We'll build it with you for {sermonPublishing.setupPrice}.</h2>
             <p className="mt-3 leading-7">Live sessions on your accounts, tested on an old sermon first, with fixes for 30 days after launch.</p>
             <div className="mt-6">
               <CheckoutButton item="sermon-setup" variant="dark">Book setup</CheckoutButton>

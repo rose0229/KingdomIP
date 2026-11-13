@@ -76,10 +76,10 @@ export function CheckoutButton({
           setOpen(true);
         }}
         className={cn(
-          "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-5 py-3 text-sm font-black uppercase tracking-wide transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime",
-          variant === "primary" && "bg-lime text-ink hover:bg-bone",
-          variant === "ghost" && "border border-ink/15 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-paper",
-          variant === "dark" && "bg-ink text-paper hover:bg-cobalt",
+          "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ",
+          variant === "primary" && "bg-accent text-on-accent hover:opacity-90",
+          variant === "ghost" && "border border-ink/25 bg-transparent text-ink hover:border-ink",
+          variant === "dark" && "bg-accent text-on-accent hover:opacity-90",
           className
         )}
       >
@@ -92,25 +92,25 @@ export function CheckoutButton({
           role="dialog"
           aria-modal="true"
           aria-label={dialogLabels[item]}
-          className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-ink/70 p-4 sm:p-8"
+          className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/60 p-4 sm:p-8"
           onClick={(e) => e.target === e.currentTarget && setOpen(false)}
         >
-          <div className="relative w-full max-w-xl rounded-sm bg-white p-4 shadow-2xl sm:p-6">
+          <div className="relative w-full max-w-xl rounded-lg bg-white p-4 text-[#171F2E] shadow-2xl sm:p-6">
             <button
               ref={closeRef}
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center text-ink hover:bg-ink/5"
+              className="absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full text-[#171F2E] hover:bg-black/5"
               aria-label="Close checkout"
             >
               <X aria-hidden className="h-5 w-5" />
             </button>
-            <p className="pr-10 text-xs leading-5 text-ink/60">
+            <p className="pr-10 text-xs leading-5 text-[#4a5160]">
               By paying you agree to our <a className="underline" href="/terms" target="_blank" rel="noopener">Terms</a> and <a className="underline" href="/refunds" target="_blank" rel="noopener">Refund Policy</a>.
             </p>
             <div className="pt-4">
               {error ? (
-                <p className="p-4 font-bold text-ink">{error}</p>
+                <p className="p-4 font-bold text-[#171F2E]">{error}</p>
               ) : stripe ? (
                 <EmbeddedCheckoutProvider stripe={stripe} options={{ fetchClientSecret }}>
                   <EmbeddedCheckout />

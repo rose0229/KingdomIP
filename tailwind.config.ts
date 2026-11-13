@@ -1,8 +1,12 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 
+// Colors come from CSS variables in app/globals.css (designed in OKLCH,
+// shipped as sRGB). Light and dark themes swap the variables, so the same
+// class works in both: ink is text, paper is the page, bone is a card.
+const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
+
 const config: Config = {
-  darkMode: ["class"],
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./lib/**/*.{ts,tsx}"],
   theme: {
     container: {
@@ -14,22 +18,18 @@ const config: Config = {
     },
     extend: {
       colors: {
-        ink: "#111111",
-        carbon: "#1a1a1a",
-        line: "#2d2d2a",
-        paper: "#f7f3e8",
-        bone: "#fffaf0",
-        lime: "#d8ff3f",
-        cobalt: "#315cff",
-        orange: "#ff6a2a"
+        ink: token("ink"),
+        paper: token("paper"),
+        bone: token("bone"),
+        accent: token("accent"),
+        "on-accent": token("on-accent")
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Arial", "sans-serif"],
-        display: ["var(--font-space)", "Arial", "sans-serif"]
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"]
       },
-      boxShadow: {
-        line: "0 0 0 1px rgba(17,17,17,0.12)",
-        glow: "0 0 0 1px rgba(216,255,63,0.35), 0 24px 80px rgba(216,255,63,0.12)"
+      transitionTimingFunction: {
+        calm: "cubic-bezier(0.2, 0.7, 0.2, 1)"
       }
     }
   },
