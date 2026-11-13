@@ -20,7 +20,7 @@ export function SiteFooter() {
           <h2 className="text-sm font-black uppercase text-lime">Navigate</h2>
           <div className="mt-4 grid gap-2">
             {navItems.map((item) => (
-              <Link className="text-sm text-paper/72 hover:text-lime" key={item.href} href={item.href}>
+              <Link className="text-sm text-paper/70 hover:text-lime" key={item.href} href={item.href}>
                 {item.label}
               </Link>
             ))}
@@ -28,7 +28,7 @@ export function SiteFooter() {
         </div>
         <div>
           <h2 className="text-sm font-black uppercase text-lime">Contact</h2>
-          <div className="mt-4 space-y-2 text-sm text-paper/72">
+          <div className="mt-4 space-y-2 text-sm text-paper/70">
             <p>hello@kingdomip.org</p>
             <p>kingdomip.org</p>
             <p>Start with a quick intake and Kingdom IP will recommend the right next step.</p>

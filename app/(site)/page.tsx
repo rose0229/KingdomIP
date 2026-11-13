@@ -64,7 +64,7 @@ export default function HomePage() {
               <Link key={service.title} href={`/services#${service.slug}`} className="group border border-ink/15 bg-paper p-6 transition hover:-translate-y-1 hover:border-cobalt hover:shadow-line">
                 <p className="text-xs font-black uppercase text-cobalt">{service.timeline}</p>
                 <h3 className="mt-4 font-display text-2xl font-black">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-ink/68">{service.who}</p>
+                <p className="mt-3 text-sm leading-6 text-ink/70">{service.who}</p>
                 <ArrowRight className="mt-6 h-5 w-5 transition group-hover:translate-x-1" aria-hidden />
               </Link>
             ))}
@@ -77,9 +77,9 @@ export default function HomePage() {
           <SectionHeading light eyebrow="What you get" title="A report your team can actually use." copy="Clear diagnosis inside a believable scope. Practical next steps. No inflated promises. No vague language." />
           <div className="grid gap-4 sm:grid-cols-2">
             {["Scorecards that make weak spots visible", "Priority roadmap with what to fix first", "Specific findings, not generic observations", "Debrief option for leadership alignment", "Implementation-ready next steps", "A clear boundary around what was and was not reviewed"].map((item) => (
-              <div key={item} className="flex gap-3 border border-white/12 p-4">
+              <div key={item} className="flex gap-3 border border-white/10 p-4">
                 <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-lime" aria-hidden />
-                <p className="font-bold text-paper/82">{item}</p>
+                <p className="font-bold text-paper/80">{item}</p>
               </div>
             ))}
           </div>

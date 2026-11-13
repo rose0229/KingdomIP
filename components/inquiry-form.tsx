@@ -300,7 +300,7 @@ export function InquiryForm() {
       <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className="mb-7">
         <div className="mb-3 flex gap-2" aria-label="Form progress">
-          {pages.map((page, index) => <span key={`${page.kind}-${page.title}-${index}`} className={`h-2 flex-1 ${index <= step ? "bg-cobalt" : "bg-ink/12"}`} />)}
+          {pages.map((page, index) => <span key={`${page.kind}-${page.title}-${index}`} className={`h-2 flex-1 ${index <= step ? "bg-cobalt" : "bg-ink/10"}`} />)}
         </div>
         <p className="text-xs font-black uppercase text-cobalt">{progress}</p>
       </div>

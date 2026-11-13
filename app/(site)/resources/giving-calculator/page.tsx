@@ -43,7 +43,7 @@ export default function GivingCalculatorPage() {
             title="Giving Calculator"
             copy="A give-page tool that teaches the why of generosity, shows people their amount per paycheck and sends them to your giving page with the number ready."
           />
-          <div className="border border-white/15 bg-white/5 p-5 text-paper/72">
+          <div className="border border-white/15 bg-white/5 p-5 text-paper/70">
             <p className="font-bold text-paper">See it on a live church site</p>
             <p className="mt-2 leading-7">It's running on a church give page right now. Try it before you buy.</p>
             <a className="mt-4 inline-block text-sm font-black uppercase text-lime hover:text-bone" href={givingCalculator.liveExampleUrl} target="_blank" rel="noopener">
@@ -105,7 +105,7 @@ export default function GivingCalculatorPage() {
             {faqs.map((item) => (
               <div key={item.q} className="border border-ink/15 bg-paper p-6">
                 <dt className="font-display text-2xl font-black">{item.q}</dt>
-                <dd className="mt-3 leading-7 text-ink/72">{item.a}</dd>
+                <dd className="mt-3 leading-7 text-ink/70">{item.a}</dd>
               </div>
             ))}
           </dl>

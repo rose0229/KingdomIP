@@ -10,7 +10,7 @@ export default function ContactPage() {
       <section className="bg-ink py-20 text-paper dark-grid">
         <div className="container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <SectionHeading light eyebrow="Start a project" title="Tell us what needs clarity." copy="Start with the basics. If you choose a service lane, the form only asks the follow-up questions needed to understand that kind of project." />
-          <div className="border border-white/15 bg-white/5 p-5 text-paper/72">
+          <div className="border border-white/15 bg-white/5 p-5 text-paper/70">
             <p className="font-bold">Response expectation</p>
             <p className="mt-2 leading-7">Most inquiries receive a reply within two business days.</p>
           </div>

@@ -52,9 +52,9 @@ export default function ServicesPage() {
                       <ButtonLink href={`/contact?service=${service.slug}`} variant="ghost" className="sm:shrink-0">Inquire</ButtonLink>
                     </div>
                     <dl className="mt-6 grid gap-4">
-                      <div><dt className="text-xs font-black uppercase text-ink/45">Who it is for</dt><dd className="mt-1 leading-7 text-ink/72">{service.who}</dd></div>
-                      <div><dt className="text-xs font-black uppercase text-ink/45">What is evaluated</dt><dd className="mt-1 leading-7 text-ink/72">{service.evaluated}</dd></div>
-                      <div><dt className="text-xs font-black uppercase text-ink/45">What you receive</dt><dd className="mt-1 leading-7 text-ink/72">{service.receives}</dd></div>
+                      <div><dt className="text-xs font-black uppercase text-ink/45">Who it is for</dt><dd className="mt-1 leading-7 text-ink/70">{service.who}</dd></div>
+                      <div><dt className="text-xs font-black uppercase text-ink/45">What is evaluated</dt><dd className="mt-1 leading-7 text-ink/70">{service.evaluated}</dd></div>
+                      <div><dt className="text-xs font-black uppercase text-ink/45">What you receive</dt><dd className="mt-1 leading-7 text-ink/70">{service.receives}</dd></div>
                     </dl>
                   </article>
                 ))}

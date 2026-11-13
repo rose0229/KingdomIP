@@ -11,7 +11,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/15 bg-ink/96 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/15 bg-ink/95 shadow-[0_10px_40px_rgba(0,0,0,0.25)] backdrop-blur">
       <div className="container flex h-20 items-center justify-between gap-4">
         <Logo />
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
@@ -19,7 +19,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-sm border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-paper/82 transition hover:border-lime/50 hover:bg-lime/10 hover:text-lime"
+              className="rounded-sm border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-bold text-paper/80 transition hover:border-lime/50 hover:bg-lime/10 hover:text-lime"
             >
               {item.label}
             </Link>
