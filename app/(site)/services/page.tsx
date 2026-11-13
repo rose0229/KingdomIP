@@ -32,7 +32,7 @@ export default function ServicesPage() {
               <h2 className="font-display text-3xl font-black">{service.title}</h2>
               <p className="mt-3 flex-1 text-lg leading-8 text-ink/70">{service.copy}</p>
               <div className="mt-6">
-                <ButtonLink href={`/contact?service=${service.slug}`} variant="ghost">Ask about this</ButtonLink>
+                <ButtonLink href={`/contact?service=${service.slug}`} variant="ghost">Start a project</ButtonLink>
               </div>
             </article>
           ))}

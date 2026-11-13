@@ -17,8 +17,8 @@ const config: Config = {
         ink: "#111111",
         carbon: "#1a1a1a",
         line: "#2d2d2a",
-        paper: "#f7f3e8",
-        bone: "#fffaf0",
+        paper: "#f5f7f9",
+        bone: "#ffffff",
         lime: "#d8ff3f",
         cobalt: "#315cff",
         orange: "#ff6a2a"

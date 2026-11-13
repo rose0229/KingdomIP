@@ -2,6 +2,7 @@ import { CheckoutButton } from "@/components/checkout-button";
 import { SectionHeading } from "@/components/section";
 import { givingCalculator } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
+import { GivingCalculatorDemo } from "@/components/giving-calculator-demo";
 
 export const metadata = pageMetadata(
   "Giving Calculator",
@@ -68,6 +69,10 @@ export default function GivingCalculatorPage() {
             </a>
           </div>
         </div>
+      </section>
+
+      <section className="bg-paper py-12 md:py-16" aria-label="Giving calculator preview">
+        <div className="container"><GivingCalculatorDemo /></div>
       </section>
 
       <section className="py-16">

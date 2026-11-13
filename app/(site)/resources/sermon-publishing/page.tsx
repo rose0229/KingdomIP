@@ -2,29 +2,13 @@ import { CheckoutButton } from "@/components/checkout-button";
 import { SectionHeading } from "@/components/section";
 import { sermonPublishing } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
+import { SermonTimeline } from "@/components/sermon-timeline";
 
 export const metadata = pageMetadata(
   "Sermon Publishing",
   "Publish a sermon on YouTube and the rest happens on its own: website page, transcript, summary, discussion guide, podcast episode and Facebook post. No monthly fee to us. Kit $49, setup $750.",
   "/resources/sermon-publishing"
 );
-
-const sunday = [
-  "Publish the sermon on YouTube.",
-  "Name the preacher in the description.",
-  "Add the video to your Sermons playlist.",
-  "Drop the audio in a folder."
-];
-
-const automatic = [
-  "The sermon goes up on your website with its series, Scripture, speaker and video.",
-  "A word-for-word transcript, taken from your captions.",
-  "A short summary and search keywords.",
-  "A printable small group discussion guide.",
-  "A podcast episode.",
-  "One post on your Facebook Page.",
-  "An email to the right person if anything breaks."
-];
 
 const different = [
   {
@@ -77,29 +61,13 @@ export default function SermonPublishingPage() {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container grid gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Sunday" title="Four steps from a person." />
-            <ol className="mt-8 space-y-4">
-              {sunday.map((step, i) => (
-                <li key={step} className="flex gap-4 border-t border-ink/15 pt-4 text-lg leading-8 text-ink/80">
-                  <span className="font-display text-2xl font-black text-cobalt">0{i + 1}</span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-8 leading-7 text-ink/65">On Monday night, someone spends about ten minutes checking it.</p>
-          </div>
-          <div>
-            <SectionHeading eyebrow="Then, on its own" title="Everything else." />
-            <ul className="mt-8 space-y-4">
-              {automatic.map((item) => (
-                <li key={item} className="border-l-4 border-cobalt pl-4 text-lg leading-8 text-ink/80">{item}</li>
-              ))}
-            </ul>
-          </div>
+      <section className="timeline-section bg-ink py-16 text-paper md:py-24" aria-labelledby="walkthrough-title">
+        <div className="container mb-10 md:mb-14">
+          <p className="text-sm font-bold text-lime">From upload to everywhere</p>
+          <h2 id="walkthrough-title" className="mt-3 max-w-3xl font-display text-4xl font-black leading-tight tracking-[-0.04em] md:text-6xl">A Sunday sermon, step by step.</h2>
+          <p className="mt-4 max-w-2xl leading-7 text-paper/65">Follow a real Orbit sermon from upload to podcast. These examples come from Part of Sacrifice, preached by Matt Rose on November 8, 2026.</p>
         </div>
+        <SermonTimeline />
       </section>
 
       <section className="bg-ink py-16 text-paper">
@@ -117,7 +85,7 @@ export default function SermonPublishingPage() {
       </section>
 
       <section className="bg-bone py-16">
-        <div className="container grid gap-5 md:grid-cols-2">
+        <div id="offers" className="container grid gap-5 md:grid-cols-2">
           <article className="flex flex-col border border-ink/15 bg-paper p-6">
             <p className="text-xs font-black uppercase text-cobalt">Do it yourself</p>
             <h2 className="mt-4 font-display text-3xl font-black">Get the kit</h2>

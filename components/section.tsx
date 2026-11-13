@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("text-xs font-black uppercase tracking-[0.2em] text-cobalt", className)}>{children}</p>;
+  return <p className={cn("text-sm font-bold tracking-normal text-cobalt", className)}>{children}</p>;
 }
 
 export function SectionHeading({ eyebrow, title, copy, light = false }: { eyebrow?: string; title: string; copy?: string; light?: boolean }) {
