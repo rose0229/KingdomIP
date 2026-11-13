@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Download } from "lucide-react";
 import { SectionHeading } from "@/components/section";
 import { givingCalculator } from "@/lib/content";
-import { getPaidCodeSession } from "@/lib/stripe";
+import { getPaidDownloadSession } from "@/lib/stripe";
 import { CheckoutButton } from "@/components/checkout-button";
 
 export const metadata: Metadata = {
@@ -20,7 +20,8 @@ const steps = [
 
 export default async function GivingCalculatorDownloadPage({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
   const { session_id } = await searchParams;
-  const session = await getPaidCodeSession(session_id);
+  const order = await getPaidDownloadSession(session_id, "code");
+  const session = order?.session;
 
   if (!session) {
     return (

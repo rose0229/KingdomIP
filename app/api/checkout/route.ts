@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
-import { INTEGRATION_ID, automaticTaxEnabled, getStripe, isShopItem, priceFor } from "@/lib/stripe";
+import { INTEGRATION_ID, automaticTaxEnabled, getStripe, isShopItem, priceFor, products, returnPathFor } from "@/lib/stripe";
 import { siteUrl } from "@/lib/utils";
 
-// The checkout panel on /resources/giving-calculator calls this to start an
+// The checkout panels on the /resources pages call this to start an
 // embedded Stripe Checkout. It returns the session's client secret, which
 // Stripe.js uses to show the payment form on our page.
 export async function POST(request: Request) {
@@ -31,35 +31,16 @@ export async function POST(request: Request) {
     allow_promotion_codes: true,
     automatic_tax: { enabled: automaticTaxEnabled },
     integration_identifier: INTEGRATION_ID,
-    return_url:
-      item === "code"
-        ? `${base}/resources/giving-calculator/download?session_id={CHECKOUT_SESSION_ID}`
-        : `${base}/resources/giving-calculator/setup-thanks?session_id={CHECKOUT_SESSION_ID}`
+    return_url: `${base}${returnPathFor(item)}?session_id={CHECKOUT_SESSION_ID}`
   };
 
   if (automaticTaxEnabled) {
     params.billing_address_collection = "required";
   }
 
-  if (item === "setup") {
-    params.custom_fields = [
-      { key: "churchwebsite", label: { type: "custom", custom: "Church website" }, type: "text" },
-      {
-        key: "websitebuilder",
-        label: { type: "custom", custom: "Website builder" },
-        type: "dropdown",
-        dropdown: {
-          options: [
-            { label: "ChurchCo", value: "churchco" },
-            { label: "Squarespace", value: "squarespace" },
-            { label: "Wix", value: "wix" },
-            { label: "WordPress", value: "wordpress" },
-            { label: "Other or not sure", value: "other" }
-          ]
-        }
-      },
-      { key: "givinglink", label: { type: "custom", custom: "Online giving page link" }, type: "text" }
-    ];
+  const product = products[item];
+  if (product.kind === "setup") {
+    params.custom_fields = product.customFields;
   }
 
   try {

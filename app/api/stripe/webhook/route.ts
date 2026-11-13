@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { Resend } from "resend";
-import { getStripe } from "@/lib/stripe";
+import { getStripe, isShopItem, products, returnPathFor } from "@/lib/stripe";
 import { siteUrl } from "@/lib/utils";
 
 // Stripe calls this after checkout. Fulfillment happens here, not on the
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       }
       case "checkout.session.async_payment_failed": {
         const session = event.data.object;
-        console.warn("Giving calculator payment failed", { session: session.id, item: session.metadata?.item });
+        console.warn("Resource payment failed", { session: session.id, item: session.metadata?.item });
         break;
       }
     }
@@ -68,27 +68,31 @@ async function fulfill(session: Stripe.Checkout.Session) {
   const ownerList = owner.split(",").map((e) => e.trim()).filter(Boolean);
   const amount = ((session.amount_total ?? 0) / 100).toLocaleString("en-US", { style: "currency", currency: (session.currency ?? "usd").toUpperCase() });
 
-  if (item === "code") {
-    const link = `${base}/resources/giving-calculator/download?session_id=${session.id}`;
+  if (!isShopItem(item)) {
+    console.warn("Paid checkout with an unknown item", { session: session.id, item });
+    return;
+  }
+  const product = products[item];
+
+  if (product.kind === "download") {
+    const link = `${base}${returnPathFor(item)}?session_id=${session.id}`;
     if (buyer) {
       await send(resend, {
         from,
         to: [buyer],
         replyTo: ownerList[0],
-        subject: "Your Giving Calculator Kit",
-        text: `Thanks for your order.\n\nDownload your kit here:\n${link}\n\nKeep this email. The link works whenever you need it.\n\nStuck? We'll set it up for you for $50: ${base}/resources/giving-calculator\n\nKingdom IP`
+        subject: `Your ${product.name}`,
+        text: `Thanks for your order.\n\nDownload your kit here:\n${link}\n\nKeep this email. The link works whenever you need it.\n\nStuck? We'll set it up with you for ${product.setupPrice}: ${base}${product.pagePath}\n\nKingdom IP`
       });
     }
-    await send(resend, { from, to: ownerList, subject: `Sold: Giving Calculator Code (${amount})`, text: `Buyer: ${name} <${buyer ?? "no email"}>\nSession: ${session.id}` });
-  }
-
-  if (item === "setup") {
+    await send(resend, { from, to: ownerList, subject: `Sold: ${product.name} (${amount})`, text: `Buyer: ${name} <${buyer ?? "no email"}>\nSession: ${session.id}` });
+  } else {
     const details = Object.entries(fields).map(([k, v]) => `${k}: ${v}`).join("\n");
     await send(resend, {
       from,
       to: ownerList,
       replyTo: buyer,
-      subject: `New Giving Calculator setup (${amount})`,
+      subject: `New ${product.name} (${amount})`,
       text: `Buyer: ${name} <${buyer ?? "no email"}>\n\n${details}\n\nSession: ${session.id}\n\nReply to this email to reach the buyer.`
     });
     if (buyer) {
@@ -96,8 +100,8 @@ async function fulfill(session: Stripe.Checkout.Session) {
         from,
         to: [buyer],
         replyTo: ownerList[0],
-        subject: "Your Giving Calculator setup is booked",
-        text: `Thanks for booking setup.\n\nWe'll email you within two business days to get started. If you have a login for your website builder, or your web person's email, have it handy.\n\nKingdom IP`
+        subject: `Your ${product.name} is booked`,
+        text: `${product.buyerEmail}\n\nKingdom IP`
       });
     }
   }

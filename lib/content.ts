@@ -91,3 +91,9 @@ export const givingCalculator = {
   setupPrice: "$50",
   liveExampleUrl: "https://www.orbitchurch.org/give/"
 };
+
+export const sermonPublishing = {
+  kitPrice: "$15",
+  setupPrice: "$250",
+  liveExampleUrl: "https://www.orbitchurch.org/watch/"
+};

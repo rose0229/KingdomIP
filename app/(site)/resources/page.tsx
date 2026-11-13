@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section";
-import { givingCalculator } from "@/lib/content";
+import { givingCalculator, sermonPublishing } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata("Resources", "Practical tools for churches from Kingdom IP. Pay once and put them to work this week.", "/resources");
@@ -12,6 +12,12 @@ const resources = [
     eyebrow: `Code ${givingCalculator.codePrice} · Setup ${givingCalculator.setupPrice}`,
     title: "Giving Calculator",
     copy: "A give-page tool that shows people their giving per paycheck and walks them toward a recurring gift."
+  },
+  {
+    href: "/resources/sermon-publishing",
+    eyebrow: `Kit ${sermonPublishing.kitPrice} · Setup ${sermonPublishing.setupPrice}`,
+    title: "Sermon Publishing",
+    copy: "Publish the sermon on YouTube and the rest happens on its own: website page, transcript, summary, discussion guide, podcast episode and Facebook post."
   }
 ];
 

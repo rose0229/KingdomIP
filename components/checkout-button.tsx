@@ -6,7 +6,14 @@ import { loadStripe, type Stripe } from "@stripe/stripe-js";
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from "@stripe/react-stripe-js";
 import { cn } from "@/lib/utils";
 
-type Item = "code" | "setup";
+type Item = "code" | "setup" | "sermon-kit" | "sermon-setup";
+
+const dialogLabels: Record<Item, string> = {
+  code: "Buy the Giving Calculator code",
+  setup: "Book Giving Calculator setup",
+  "sermon-kit": "Buy the Sermon Publishing Kit",
+  "sermon-setup": "Book Sermon Publishing setup"
+};
 
 let stripePromise: Promise<Stripe | null> | null = null;
 function getStripeJs() {
@@ -84,7 +91,7 @@ export function CheckoutButton({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={item === "code" ? "Buy the Giving Calculator code" : "Book Giving Calculator setup"}
+          aria-label={dialogLabels[item]}
           className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-ink/70 p-4 sm:p-8"
           onClick={(e) => e.target === e.currentTarget && setOpen(false)}
         >

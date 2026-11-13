@@ -14,14 +14,113 @@ export function getStripe(): Stripe {
   return client;
 }
 
-export type ShopItem = "code" | "setup";
+// Everything kingdomip.org sells. The item key is stored in each checkout's
+// metadata, so never rename an existing key ("code" and "setup" are the
+// Giving Calculator and have live orders under those names).
+type DownloadProduct = {
+  kind: "download";
+  name: string;
+  priceEnv: string;
+  pagePath: string;
+  file: string;
+  setupPrice: string;
+};
 
-export function priceFor(item: ShopItem): string | undefined {
-  return item === "code" ? process.env.STRIPE_PRICE_CODE : process.env.STRIPE_PRICE_SETUP;
-}
+type SetupProduct = {
+  kind: "setup";
+  name: string;
+  priceEnv: string;
+  pagePath: string;
+  customFields: Stripe.Checkout.SessionCreateParams.CustomField[];
+  buyerEmail: string;
+};
+
+export const products = {
+  code: {
+    kind: "download",
+    name: "Giving Calculator Kit",
+    priceEnv: "STRIPE_PRICE_CODE",
+    pagePath: "/resources/giving-calculator",
+    file: "giving-calculator-kit.zip",
+    setupPrice: "$50"
+  },
+  setup: {
+    kind: "setup",
+    name: "Giving Calculator setup",
+    priceEnv: "STRIPE_PRICE_SETUP",
+    pagePath: "/resources/giving-calculator",
+    customFields: [
+      { key: "churchwebsite", label: { type: "custom", custom: "Church website" }, type: "text" },
+      {
+        key: "websitebuilder",
+        label: { type: "custom", custom: "Website builder" },
+        type: "dropdown",
+        dropdown: {
+          options: [
+            { label: "ChurchCo", value: "churchco" },
+            { label: "Squarespace", value: "squarespace" },
+            { label: "Wix", value: "wix" },
+            { label: "WordPress", value: "wordpress" },
+            { label: "Other or not sure", value: "other" }
+          ]
+        }
+      },
+      { key: "givinglink", label: { type: "custom", custom: "Online giving page link" }, type: "text" }
+    ],
+    buyerEmail:
+      "Thanks for booking setup.\n\nWe'll email you within two business days to get started. If you have a login for your website builder, or your web person's email, have it handy."
+  },
+  "sermon-kit": {
+    kind: "download",
+    name: "Sermon Publishing Kit",
+    priceEnv: "STRIPE_PRICE_SERMON_KIT",
+    pagePath: "/resources/sermon-publishing",
+    file: "sermon-publishing-kit.zip",
+    setupPrice: "$250"
+  },
+  "sermon-setup": {
+    kind: "setup",
+    name: "Sermon Publishing setup",
+    priceEnv: "STRIPE_PRICE_SERMON_SETUP",
+    pagePath: "/resources/sermon-publishing",
+    customFields: [
+      { key: "churchwebsite", label: { type: "custom", custom: "Church website" }, type: "text" },
+      {
+        key: "websiteplatform",
+        label: { type: "custom", custom: "Website platform" },
+        type: "dropdown",
+        dropdown: {
+          options: [
+            { label: "WordPress", value: "wordpress" },
+            { label: "Squarespace", value: "squarespace" },
+            { label: "Wix or Webflow", value: "wixwebflow" },
+            { label: "Church platform (Subsplash, Church Center)", value: "churchplatform" },
+            { label: "Custom site in a Git repo", value: "git" },
+            { label: "Other or not sure", value: "other" }
+          ]
+        }
+      },
+      { key: "youtubechannel", label: { type: "custom", custom: "YouTube channel link" }, type: "text" }
+    ],
+    buyerEmail:
+      "Thanks for booking Sermon Publishing setup.\n\nWe'll email you within two business days to schedule the first build session. Before then, find out who holds admin access to your YouTube channel, website, Facebook Page and podcast host. Those people, or their logins, need to be on the call."
+  }
+} satisfies Record<string, DownloadProduct | SetupProduct>;
+
+export type ShopItem = keyof typeof products;
 
 export function isShopItem(value: unknown): value is ShopItem {
-  return value === "code" || value === "setup";
+  return typeof value === "string" && Object.prototype.hasOwnProperty.call(products, value);
+}
+
+export function priceFor(item: ShopItem): string | undefined {
+  return process.env[products[item].priceEnv];
+}
+
+// Where Stripe sends the buyer after paying.
+export function returnPathFor(item: ShopItem): string {
+  const product = products[item];
+  return product.kind === "download" ? `${product.pagePath}/download` : `${product.pagePath}/setup-thanks`;
 }
 
 // Tags these checkouts in the Stripe Dashboard so they can be tracked apart
@@ -33,15 +132,20 @@ export const INTEGRATION_ID = "kingdomip-giving-calculator-qvhrtwmk";
 // in the Stripe Dashboard (Tax > Settings, Tax > Locations).
 export const automaticTaxEnabled = process.env.STRIPE_AUTOMATIC_TAX === "true";
 
-// A paid code purchase. Used by the download page, the download route and
-// the webhook.
-export async function getPaidCodeSession(sessionId: string | null | undefined) {
+// A paid checkout for a download. Pass the item to require a specific product
+// (the download pages do); leave it out to accept any download (the shared
+// /api/download route does, and serves that product's file).
+export async function getPaidDownloadSession(sessionId: string | null | undefined, item?: ShopItem) {
   if (!sessionId || !sessionId.startsWith("cs_")) return null;
   try {
     const session = await getStripe().checkout.sessions.retrieve(sessionId);
-    if (session.metadata?.item !== "code") return null;
+    const bought = session.metadata?.item;
+    if (!isShopItem(bought)) return null;
+    const product = products[bought];
+    if (product.kind !== "download") return null;
+    if (item && bought !== item) return null;
     if (session.payment_status === "unpaid") return null;
-    return session;
+    return { session, item: bought, product };
   } catch {
     return null;
   }
