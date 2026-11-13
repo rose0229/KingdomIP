@@ -27,7 +27,7 @@ export function SiteHeader() {
         </nav>
         <div className="hidden lg:block">
           <ButtonLink href="/contact" className="min-h-10 px-4 py-2 text-xs">
-            Start a Project
+            Start a project
           </ButtonLink>
         </div>
         <button
@@ -50,7 +50,7 @@ export function SiteHeader() {
             ))}
             <div onClick={() => setOpen(false)}>
               <ButtonLink href="/contact" className="mt-3">
-                Start a Project
+                Start a project
               </ButtonLink>
             </div>
           </nav>

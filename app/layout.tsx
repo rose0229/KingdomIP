@@ -9,10 +9,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Kingdom IP | Church Audits and Strategic Consulting",
+    default: "Kingdom IP | Tools and Help for Churches",
     template: "%s | Kingdom IP"
   },
-  description: "Kingdom IP gives churches and purpose-driven organizations a clear, honest look at what is working, what is weak, and what to do next.",
+  description: "Tools built at a real church, ready for yours: a Giving Calculator and Sermon Publishing system, plus custom help with websites, sermons, strategy and AI workflows.",
   applicationName: "Kingdom IP",
   icons: {
     icon: "/favicon.svg",
@@ -31,9 +31,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             name: "Kingdom IP",
             url: siteUrl,
             email: "hello@kingdomip.org",
-            description: "Diagnostic audits and practical strategy recommendations for churches, ministries, and purpose-driven organizations.",
+            description: "Tools and custom help for churches: giving, sermon publishing, websites, sermon review, ministry strategy and AI workflows.",
             areaServed: "United States",
-            serviceType: ["Website audits", "Sermon and preaching audits", "Communication strategy", "AI systems consulting", "Church and ministry strategy"],
+            serviceType: ["Website and communication", "Sermon review", "Ministry strategy", "AI systems and workflows"],
             sameAs: []
           }}
         />

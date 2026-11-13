@@ -41,7 +41,7 @@ export default function PrivacyPage() {
         {
           heading: "Who helps us",
           body: [
-            "A few companies process information for us so the site works: Stripe (payments), Resend (sending email), Vercel (hosting and site statistics) and Sanity (managing site content). They handle your information only to provide those services."
+            "A few companies process information for us so the site works: Stripe (payments), Resend (sending email) and Vercel (hosting and site statistics). They handle your information only to provide those services."
           ]
         },
         {

@@ -2,32 +2,25 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
 
-const inquirySchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  organization: z.string().optional(),
-  website: z.string().optional(),
-  organizationType: z.string().optional(),
-  size: z.string().optional(),
-  improve: z.string().optional(),
-  services: z.string().optional(),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
-  details: z.string().optional(),
-  supportingLinks: z.string().optional()
-}).passthrough();
+const contactSchema = z.object({
+  name: z.string().trim().min(2).max(200),
+  email: z.string().trim().email().max(200),
+  organization: z.string().trim().max(200).optional(),
+  topic: z.string().trim().max(200).optional(),
+  message: z.string().trim().min(5).max(5000)
+});
 
 export async function POST(request: Request) {
   const json = await request.json().catch(() => null);
 
+  // Spam trap: real people never fill in this hidden field.
   if (json?.companyWebsite) {
     return NextResponse.json({ ok: true });
   }
 
-  const parsed = inquirySchema.safeParse(json);
-
+  const parsed = contactSchema.safeParse(json);
   if (!parsed.success) {
-    return NextResponse.json({ error: "Please complete the required fields." }, { status: 400 });
+    return NextResponse.json({ error: "Please fill in your name, email and a short message." }, { status: 400 });
   }
 
   const resendKey = process.env.RESEND_API_KEY;
@@ -35,66 +28,37 @@ export async function POST(request: Request) {
   const from = process.env.CONTACT_FROM_EMAIL ?? "Kingdom IP <hello@kingdomip.org>";
 
   if (!resendKey || !to) {
-    console.error("Kingdom IP contact form missing email configuration", {
-      hasResendKey: Boolean(resendKey),
-      hasContactToEmail: Boolean(to)
-    });
-    return NextResponse.json({ error: "Email delivery is not configured yet. Please email hello@kingdomip.org." }, { status: 503 });
+    console.error("Contact form missing email configuration", { hasResendKey: Boolean(resendKey), hasContactToEmail: Boolean(to) });
+    return NextResponse.json({ error: "The form isn't connected yet. Please email hello@kingdomip.org." }, { status: 503 });
   }
 
-  const resend = new Resend(resendKey);
-  const data = parsed.data;
-  const recipients = to.split(",").map((email) => email.trim()).filter(Boolean);
-  const entries = Object.entries(data);
-  const rows = entries
-    .map(([key, value]) => `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:700;vertical-align:top">${escapeHtml(labelize(key))}</td><td style="padding:8px;border:1px solid #ddd;white-space:pre-wrap">${escapeHtml(String(value || ""))}</td></tr>`)
-    .join("");
-  const text = entries.map(([key, value]) => `${labelize(key)}:\n${String(value || "")}`).join("\n\n");
-  const isCompleted = data.formCompletionStatus === "completed";
-  const subjectName = data.organization || data.name;
+  const { name, email, organization, topic, message } = parsed.data;
+  const text = [
+    `From: ${name} <${email}>`,
+    organization ? `Church or organization: ${organization}` : null,
+    `Help with: ${topic || "Not sure yet"}`,
+    "",
+    message
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
 
   try {
-    const result = await resend.emails.send({
+    const result = await new Resend(resendKey).emails.send({
       from,
-      to: recipients,
-      replyTo: data.email,
-      subject: isCompleted ? `Completed Kingdom IP Intake: ${subjectName}` : `New Kingdom IP Inquiry: ${subjectName}`,
-      text: `${isCompleted ? "Completed Kingdom IP intake" : "New Kingdom IP inquiry"}\n\n${text}`,
-      html: `<h1>${isCompleted ? "Completed Kingdom IP intake" : "New Kingdom IP inquiry"}</h1><p><strong>Reply to:</strong> ${escapeHtml(data.email)}</p><table style="border-collapse:collapse">${rows}</table>`
+      to: to.split(",").map((address) => address.trim()).filter(Boolean),
+      replyTo: email,
+      subject: `Kingdom IP: ${topic || "New message"} from ${organization || name}`,
+      text
     });
-
     if (result.error) {
-      console.error("Kingdom IP contact form Resend error", result.error);
-      return NextResponse.json({ error: `The inquiry could not be sent: ${publicErrorMessage(result.error)}` }, { status: 502 });
+      console.error("Contact form Resend error", result.error);
+      return NextResponse.json({ error: "That didn't send. Please email hello@kingdomip.org." }, { status: 502 });
     }
   } catch (error) {
-    console.error("Kingdom IP contact form send exception", error);
-    return NextResponse.json({ error: `The inquiry could not be sent: ${publicErrorMessage(error)}` }, { status: 502 });
+    console.error("Contact form send failed", error);
+    return NextResponse.json({ error: "That didn't send. Please email hello@kingdomip.org." }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });
-}
-
-function labelize(key: string) {
-  return key
-    .replace(/([A-Z])/g, " $1")
-    .replace(/^./, (letter) => letter.toUpperCase())
-    .trim();
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function publicErrorMessage(error: unknown) {
-  if (error && typeof error === "object" && "message" in error && typeof error.message === "string") {
-    return error.message.replace(/re_[A-Za-z0-9_-]+/g, "[redacted]");
-  }
-
-  return "email service rejected the request. Please email hello@kingdomip.org.";
 }

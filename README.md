@@ -14,10 +14,10 @@ The copy avoids vague church language, inflated growth promises, generic consult
 
 ## Public Sitemap
 
-- `/` - Homepage with hero, process summary, project lanes, what you get, why Kingdom IP, featured package, FAQ preview, final CTA.
-- `/services` - Project lanes plus package comparison.
-- `/contact` - Multi-step inquiry form.
-- `/studio` - Sanity Studio for future CMS-managed content.
+- `/` - Homepage: the two Resources up top, four custom-work lanes below.
+- `/resources` - Giving Calculator and Sermon Publishing, each with Stripe checkout.
+- `/services` - Four custom-work lanes.
+- `/contact` - One short contact form (name, email, church, topic, message).
 
 ## Visual Direction
 

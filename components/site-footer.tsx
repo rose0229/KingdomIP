@@ -10,10 +10,10 @@ export function SiteFooter() {
         <div className="space-y-5">
           <Logo />
           <p className="max-w-md text-base leading-7 text-paper/70">
-            Clear diagnosis. Practical next steps. Project strategy for churches, ministries, and purpose-driven organizations.
+            Tools and help for churches, built at Orbit Church in Buckeye, Arizona.
           </p>
           <ButtonLink href="/contact" variant="secondary">
-            Start the Intake
+            Start a project
           </ButtonLink>
         </div>
         <div>
@@ -30,8 +30,6 @@ export function SiteFooter() {
           <h2 className="text-sm font-black uppercase text-lime">Contact</h2>
           <div className="mt-4 space-y-2 text-sm text-paper/70">
             <p>hello@kingdomip.org</p>
-            <p>kingdomip.org</p>
-            <p>Start with a quick intake and Kingdom IP will recommend the right next step.</p>
           </div>
         </div>
       </div>
