@@ -87,13 +87,13 @@ export const faqs = [
 // Giving Calculator resource. Checkout runs through Stripe (see lib/stripe.ts
 // and the STRIPE_* environment variables).
 export const givingCalculator = {
-  codePrice: "$10",
-  setupPrice: "$50",
+  codePrice: "$19",
+  setupPrice: "$99",
   liveExampleUrl: "https://www.orbitchurch.org/give/"
 };
 
 export const sermonPublishing = {
-  kitPrice: "$15",
-  setupPrice: "$250",
+  kitPrice: "$49",
+  setupPrice: "$750",
   liveExampleUrl: "https://www.orbitchurch.org/watch/"
 };

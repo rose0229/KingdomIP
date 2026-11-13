@@ -20,6 +20,7 @@ export function getStripe(): Stripe {
 type DownloadProduct = {
   kind: "download";
   name: string;
+  lookupKey: string;
   priceEnv: string;
   pagePath: string;
   file: string;
@@ -29,6 +30,7 @@ type DownloadProduct = {
 type SetupProduct = {
   kind: "setup";
   name: string;
+  lookupKey: string;
   priceEnv: string;
   pagePath: string;
   customFields: Stripe.Checkout.SessionCreateParams.CustomField[];
@@ -39,14 +41,16 @@ export const products = {
   code: {
     kind: "download",
     name: "Giving Calculator Kit",
+    lookupKey: "giving_calculator_code",
     priceEnv: "STRIPE_PRICE_CODE",
     pagePath: "/resources/giving-calculator",
     file: "giving-calculator-kit.zip",
-    setupPrice: "$50"
+    setupPrice: "$99"
   },
   setup: {
     kind: "setup",
     name: "Giving Calculator setup",
+    lookupKey: "giving_calculator_setup",
     priceEnv: "STRIPE_PRICE_SETUP",
     pagePath: "/resources/giving-calculator",
     customFields: [
@@ -73,14 +77,16 @@ export const products = {
   "sermon-kit": {
     kind: "download",
     name: "Sermon Publishing Kit",
+    lookupKey: "sermon_publishing_kit",
     priceEnv: "STRIPE_PRICE_SERMON_KIT",
     pagePath: "/resources/sermon-publishing",
     file: "sermon-publishing-kit.zip",
-    setupPrice: "$250"
+    setupPrice: "$750"
   },
   "sermon-setup": {
     kind: "setup",
     name: "Sermon Publishing setup",
+    lookupKey: "sermon_publishing_setup",
     priceEnv: "STRIPE_PRICE_SERMON_SETUP",
     pagePath: "/resources/sermon-publishing",
     customFields: [
@@ -113,8 +119,18 @@ export function isShopItem(value: unknown): value is ShopItem {
   return typeof value === "string" && Object.prototype.hasOwnProperty.call(products, value);
 }
 
-export function priceFor(item: ShopItem): string | undefined {
-  return process.env[products[item].priceEnv];
+// Prices are found by their Stripe lookup key, so a price change happens in
+// Stripe alone: create the new price with the same lookup key and "transfer
+// lookup key" checked. The STRIPE_PRICE_* variable is only a fallback.
+export async function priceFor(item: ShopItem): Promise<string | undefined> {
+  const product = products[item];
+  try {
+    const found = await getStripe().prices.list({ lookup_keys: [product.lookupKey], active: true, limit: 1 });
+    if (found.data[0]) return found.data[0].id;
+  } catch (error) {
+    console.error("Price lookup failed", { item, error });
+  }
+  return process.env[product.priceEnv];
 }
 
 // Where Stripe sends the buyer after paying.

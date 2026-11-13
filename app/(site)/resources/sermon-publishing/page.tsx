@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata(
   "Sermon Publishing",
-  "Publish a sermon on YouTube and the rest happens on its own: website page, transcript, summary, discussion guide, podcast episode and Facebook post. Kit $15, setup $250.",
+  "Publish a sermon on YouTube and the rest happens on its own: website page, transcript, summary, discussion guide, podcast episode and Facebook post. No monthly fee to us. Kit $49, setup $750.",
   "/resources/sermon-publishing"
 );
 
@@ -24,6 +24,21 @@ const automatic = [
   "A podcast episode.",
   "One post on your Facebook Page.",
   "An email to the right person if anything breaks."
+];
+
+const different = [
+  {
+    title: "No subscription to us.",
+    copy: "Sermon content tools charge every month, forever. This runs on your own accounts. You pay the services it uses directly, and you never pay us again."
+  },
+  {
+    title: "It finishes the job.",
+    copy: "Most tools hand you a summary and a guide, and then someone still has to post everything. This puts it on your website, your podcast feed and your Facebook Page on its own."
+  },
+  {
+    title: "It runs every Sunday at a real church.",
+    copy: "Every rule in the kit came from something that broke at Orbit. It checks the live page after each run and emails someone when anything fails."
+  }
 ];
 
 const faqs = [
@@ -50,7 +65,7 @@ export default function SermonPublishingPage() {
             light
             eyebrow="Resource"
             title="Sermon Publishing"
-            copy="One volunteer does four things on Sunday. Within about half an hour, the sermon is on your website with a transcript, a summary, a discussion guide, a podcast episode and a Facebook post."
+            copy="One volunteer does four things on Sunday. Within about half an hour, the sermon is on your website with a transcript, a summary, a discussion guide, a podcast episode and a Facebook post. No monthly fee to us."
           />
           <div className="border border-white/15 bg-white/5 p-5 text-paper/70">
             <p className="font-bold text-paper">See it on a live church site</p>
@@ -87,6 +102,20 @@ export default function SermonPublishingPage() {
         </div>
       </section>
 
+      <section className="bg-ink py-16 text-paper">
+        <div className="container">
+          <SectionHeading light eyebrow="Why it's different" title="Built once. Yours for good." />
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {different.map((item) => (
+              <div key={item.title} className="border border-white/15 bg-white/5 p-6">
+                <h3 className="font-display text-2xl font-black text-lime">{item.title}</h3>
+                <p className="mt-3 leading-7 text-paper/70">{item.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-bone py-16">
         <div className="container grid gap-5 md:grid-cols-2">
           <article className="flex flex-col border border-ink/15 bg-paper p-6">
@@ -98,7 +127,8 @@ export default function SermonPublishingPage() {
                 "The full build prompt for Claude Code or Codex",
                 "A form that fills in the prompt with your church's answers",
                 "A printable card for your Sunday volunteer",
-                "Built on your accounts and keys, never ours"
+                "Built on your accounts and keys, never ours",
+                "Pay once. No subscription"
               ].map((item) => (
                 <li className="border-t border-ink/15 pt-3 text-sm font-bold" key={item}>{item}</li>
               ))}

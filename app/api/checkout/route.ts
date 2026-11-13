@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unknown item." }, { status: 400 });
   }
 
-  const price = priceFor(item);
+  const price = process.env.STRIPE_SECRET_KEY ? await priceFor(item) : undefined;
   if (!price || !process.env.STRIPE_SECRET_KEY) {
     console.error("Checkout is missing Stripe configuration", { item, hasPrice: Boolean(price), hasKey: Boolean(process.env.STRIPE_SECRET_KEY) });
     return NextResponse.json({ error: "Checkout isn't set up yet. Please email hello@kingdomip.org." }, { status: 503 });
